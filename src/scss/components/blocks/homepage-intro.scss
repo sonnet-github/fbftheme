@@ -1,0 +1,31 @@
+@use '../../globals/variables' as *;
+
+.homepage-intro {
+    padding-top: 56px;
+    padding-bottom: 56px;
+    border-bottom: 1px solid $black;
+
+    p {
+        font-size: 18px;
+        line-height: 140%;
+        letter-spacing: -0.36px;
+    }
+
+    &__header {
+        padding-bottom: 56px;
+
+        img {
+            max-width: 588px;
+            height: auto;
+            width: auto;
+        }
+    }
+
+    &__wrap {
+        gap: 24px;
+
+        & > div {
+            width: calc((100% - 24px) / 2)
+        }
+    }
+}

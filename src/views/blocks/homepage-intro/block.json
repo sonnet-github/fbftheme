@@ -1,0 +1,24 @@
+{
+    "name": "acf/homepage-intro",
+    "title": "Homepage Intro",
+    "description": "Theme styled Homepage Intro block.",
+    "category": "custom-layout",
+    "icon": "text",
+    "keywords": ["home", "page", "intro", "head"],
+    "acf": {
+        "mode": "auto",
+        "renderTemplate": "homepage-intro.php"
+    },
+    "align": "full",
+    "supports" : {
+        "anchor" : true
+    },
+    "example": {
+        "attributes": {
+            "mode" : "preview",
+            "data" : {
+                "preview_image" : "homepage-intro/preview.png"
+            }
+        }
+    }
+}

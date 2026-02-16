@@ -1,0 +1,35 @@
+@use '../globals/variables' as *;
+
+header {
+    padding-top: 38px;
+    padding-bottom: 38px;
+    border-bottom: 1px solid $black;
+
+    a {
+        text-decoration: none;
+    }
+
+    ul {
+        li {
+            a {
+                color: $black;
+            }
+        }
+    }
+}
+
+.header-desktop {
+    .navigation {
+        gap: 72px;
+
+        a {
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 120%;
+        }
+    }
+}
+
+.header-mobile {
+    display: none;
+}
