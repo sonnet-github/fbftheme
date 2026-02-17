@@ -37,6 +37,7 @@
     /* Add theme support for plugin features */
     add_theme_support( 'title-tag' );
     add_theme_support( 'yoast-seo-breadcrumbs' );
+    add_theme_support( 'post-thumbnails' );
 
     /* SDEV Bootstrap */
     require_once('lib/sdev/sdev.php');

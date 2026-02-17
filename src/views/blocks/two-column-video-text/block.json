@@ -1,0 +1,24 @@
+{
+    "name": "acf/two-column-video-text",
+    "title": "Two Column - Video Text",
+    "description": "Theme styled Homepage Intro block.",
+    "category": "custom-layout",
+    "icon": "text",
+    "keywords": ["two", "column", "video", "text"],
+    "acf": {
+        "mode": "auto",
+        "renderTemplate": "two-column-video-text.php"
+    },
+    "align": "full",
+    "supports" : {
+        "anchor" : true
+    },
+    "example": {
+        "attributes": {
+            "mode" : "preview",
+            "data" : {
+                "preview_image" : "two-column-video-text/preview.png"
+            }
+        }
+    }
+}

@@ -1,0 +1,24 @@
+{
+    "name": "acf/join-the-campaign",
+    "title": "Join the Campaign",
+    "description": "Theme styled Join the campaign block.",
+    "category": "custom-layout",
+    "icon": "text",
+    "keywords": ["join", "campaign", "video", "three", "col"],
+    "acf": {
+        "mode": "auto",
+        "renderTemplate": "join-the-campaign.php"
+    },
+    "align": "full",
+    "supports" : {
+        "anchor" : true
+    },
+    "example": {
+        "attributes": {
+            "mode" : "preview",
+            "data" : {
+                "preview_image" : "join-the-campaign/preview.png"
+            }
+        }
+    }
+}

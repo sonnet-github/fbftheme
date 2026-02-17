@@ -1,0 +1,76 @@
+{
+    "key": "group_699320da7b343",
+    "title": "BLOCK - Join the Campaign",
+    "fields": [
+        {
+            "key": "field_699320dabe18a",
+            "label": "WYSIWYG",
+            "name": "wysiwyg",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "<h2>Join the Campaign<\/h2>\r\n<p>LinkedIn has joined the other social networks where clickbait and outrage has become the currency. We can change this — not by fighting LinkedIn but by letting them know the platform you want to see, the voices you want to hear and the business world you want to exist in. Because there are hundreds of academics, experts and tech specialists with the data and solutions to make the feed fair. We all need to shout loud enough for LinkedIn to listen to their solutions.<\/p>",
+            "allow_in_bindings": 0,
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
+            "key": "field_69945e22cdca3",
+            "label": "Campaigns",
+            "name": "campaigns_block",
+            "aria-label": "",
+            "type": "post_object",
+            "instructions": "Choose 3 Campaigns to show",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "campaign"
+            ],
+            "post_status": [
+                "publish"
+            ],
+            "taxonomy": "",
+            "return_format": "object",
+            "multiple": 1,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "bidirectional": 0,
+            "ui": 1,
+            "bidirectional_target": []
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/join-the-campaign"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "display_title": "",
+    "modified": 1771331137
+}

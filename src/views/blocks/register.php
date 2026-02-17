@@ -12,7 +12,9 @@
         $acf_blocks = [
             'full-width-banner',
             'wysiwyg',
-            'homepage-intro'
+            'homepage-intro',
+            'two-column-video-text',
+            'join-the-campaign'
         ];
 
         foreach($acf_blocks as $block){

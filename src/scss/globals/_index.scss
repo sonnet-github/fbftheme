@@ -9,6 +9,7 @@ body {
     font-weight: 500;
 }
 
+h2,
 h1 {
     font-size: 40px;
     font-weight: 600;
@@ -16,6 +17,7 @@ h1 {
     letter-spacing: -0.8px;
 }
 
+h2,
 h1,
 p {
     margin-bottom: 24px;
@@ -42,10 +44,22 @@ p {
     justify-content: space-between;
 }
 
+.flex-row-reverse {
+    flex-direction: row-reverse;
+}
+
+.flex-col-reverse {
+    flex-direction: column-reverse;
+}
+
 .items-center {
     align-items: center;
 }
 
 .width-100 {
     width: 100%;
+}
+
+img {
+    max-width: 100%;
 }
