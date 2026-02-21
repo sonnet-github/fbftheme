@@ -1,0 +1,36 @@
+@use '../../globals/variables' as *;
+
+.wysiwyg {
+    padding-top: 56px;
+    padding-bottom: 56px;
+
+    img {
+        vertical-align: top;
+        margin-top: 56px;
+    }
+
+    p {
+        font-size: 20px;
+        font-weight: 500;
+
+        &.small-font {
+            font-size: 13px;
+            line-height: 140%;
+            font-weight: 500;
+            margin-top: 56px;
+            margin-bottom: 56px;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+
+            &:first-child {
+                margin-top: 0;
+            }
+
+            a {
+                color: $black;
+            }
+        }
+    }
+}
