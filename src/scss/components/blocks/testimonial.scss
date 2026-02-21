@@ -1,0 +1,47 @@
+@use '../../globals/variables' as *;
+
+.testimonial {
+    padding-top: 56px;
+    padding-bottom: 112px;
+
+    h4, h5 {
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    h4 {
+        margin-bottom: 0;
+    }
+
+    h5 {
+        margin-bottom: 16px;
+    }
+
+    &__wrap {
+        gap: 56px 20px;
+    }
+
+    &__item {
+        width: calc((100% - 20px) / 2);
+
+        &-wrap {
+            gap: 16px;
+        }
+    }
+
+    &__image {
+        width: 30.613%;
+        max-width: 180px;
+    }
+
+    &__content {
+        width: 66.667%;
+
+        p {
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: -0.32px;
+            line-height: 140%;
+        }
+    }
+}

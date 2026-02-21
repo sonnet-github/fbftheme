@@ -1,0 +1,24 @@
+{
+    "name": "acf/testimonial-listing",
+    "title": "Testimonial Listing",
+    "description": "Theme styled Testimonial Listing block.",
+    "category": "custom-layout",
+    "icon": "text",
+    "keywords": ["testimonial", "why", "this", "website", "listing"],
+    "acf": {
+        "mode": "auto",
+        "renderTemplate": "testimonial-listing.php"
+    },
+    "align": "full",
+    "supports" : {
+        "anchor" : true
+    },
+    "example": {
+        "attributes": {
+            "mode" : "preview",
+            "data" : {
+                "preview_image" : "testimonial-listing/preview.png"
+            }
+        }
+    }
+}

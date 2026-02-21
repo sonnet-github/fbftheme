@@ -16,6 +16,7 @@
             'two-column-video-text',
             'join-the-campaign',
             'join-the-experiments',
+            "testimonial-listing",
         ];
 
         foreach($acf_blocks as $block){
