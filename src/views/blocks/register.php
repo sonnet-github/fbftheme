@@ -14,7 +14,8 @@
             'wysiwyg',
             'homepage-intro',
             'two-column-video-text',
-            'join-the-campaign'
+            'join-the-campaign',
+            'join-the-experiments',
         ];
 
         foreach($acf_blocks as $block){

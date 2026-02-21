@@ -1,0 +1,18 @@
+@use '../../globals/variables' as *;
+
+.join-the-experiment {    
+    padding-bottom: 56px;
+
+    &__inner {
+        padding-bottom: 56px;
+        border-bottom: 1px solid $black;
+    }
+
+    &__charts {
+        gap: 24px;
+
+        & > div {
+            width: calc((100% - 24px) / 2);
+        }
+    }
+}

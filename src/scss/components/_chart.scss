@@ -1,0 +1,126 @@
+@use '../globals/variables' as *;
+
+.chart {
+    $this: &;
+    
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+
+    &-heading {
+        margin-bottom: 16px;
+    }
+
+    &-content {
+        background-color: $cream;
+        border-radius: 8px;
+        padding: 16px 0 16px;
+        margin-bottom: 8px;
+    }
+
+    &-description {
+        text-align: left;
+        margin-bottom: 23px;
+        
+        p {
+            font-size: 10px;
+            line-height: 140%;
+            letter-spacing: -0.2px;
+            font-weight: 500;
+            color: $grey;
+        }
+    }
+
+    &-bars {
+        border-bottom: 1px solid $black;
+
+        &-inner {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            align-items: end;
+            height: 204px;
+        }
+    }
+
+    &-bar {
+        background-color: $white;
+        border-radius: 8px 8px 0 0;
+        padding-top: 16px;
+
+        label {
+            font-weight: 600;
+            line-height: 120%;
+            letter-spacing: -0.8px;
+            font-size: 40px;
+            color: $purple;
+        }
+
+        &--black,
+        &--purple {
+            background-color: $purple;
+
+            label {
+                color: $white;
+            }
+        }
+
+        &--black {
+            background-color: $black;
+        }
+
+        &--bordered {
+            background-color: transparent;
+            border: 1px solid $black;
+            border-bottom: 0;
+
+            label {
+                color: $black;
+            }
+        }
+    }
+
+    &-footer {
+        &-wrap {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+        }
+    }
+
+    &-label {
+        font-size: 10px;
+        font-weight: 500;
+        line-height: 140%;
+        letter-spacing: 0.2px;
+        width: 180px;
+        padding-top: 16px;
+    }
+
+    &--1 {
+        #{$this} {
+            &-bar {
+                width: 180px;
+            }
+        }
+    }
+
+    &--2 {
+        #{$this} {
+            &-bar {
+                width: 78px;
+                padding-top: 8px;
+
+                label {
+                    font-size: 24px;
+                    line-height: 120%;
+                    letter-spacing: -0.48px;
+                }
+            }
+
+            &-label {
+                width: 78px;
+            }
+        }
+    }
+}
