@@ -9,6 +9,19 @@
         margin-top: 56px;
     }
 
+    h3 {
+        margin-top: 56px;
+        margin-bottom: 56px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+
     p {
         font-size: 20px;
         font-weight: 500;

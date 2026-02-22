@@ -1,0 +1,154 @@
+@use '../../globals/variables' as *;
+
+.experiment-options {
+    padding-bottom: 80px;
+    
+    ol {
+        list-style: numeric;
+        padding-left: 20px;
+        font-size: 16px;
+        line-height: 140%;
+        letter-spacing: -0.32px;
+        font-weight: 500;
+    }
+    
+    &__tab {
+        &-wrap {
+            background-color: $cream;
+            border-bottom: 1px solid $black;
+            padding: 25px 0;
+        }
+
+        &-heading {
+            gap: 56px;
+
+            a {
+                color: $purple;
+                text-decoration: none;
+                font-size: 16px;
+                display: inline-block;
+                line-height: 120%;
+                font-weight: 600;
+                position: relative;
+
+                &:after {
+                    content: '';
+                    position: absolute;
+                    height: 8px;
+                    width: 100%;
+                    background-color: $purple;
+                    bottom: -28px;
+                    left: 0;
+                }
+            }
+        }
+
+        &-description {
+            margin-bottom: 56px;
+
+            h2 {
+                color: $purple;
+                margin-bottom: 32px;
+            }
+
+            h3 {
+                font-size: 24px;
+                letter-spacing: -0.48px;
+                margin-bottom: 24px;
+                max-width: 693px;
+            }
+
+            p {
+                font-size: 20px;
+                letter-spacing: -0.4px;
+                line-height: 140%;
+                margin-bottom: 32px;
+                max-width: 693px;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+
+        &-items {
+            padding-top: 80px;
+        }
+    }
+
+    &__how-it-works {
+        margin-bottom: 56px;
+
+        h2 {
+            font-weight: 500;
+            font-size: 32px;
+            line-height: 140%;
+            letter-spacing: -0.64px;
+        }
+
+        &-steps {
+            gap: 24px;
+        }
+
+        &-step {
+            width: 100%;
+            padding: 24px 16px;
+            border: 1px solid $black;
+            border-radius: 8px;
+            background-color: $white;
+
+            h3 {
+                margin-bottom: 56px;
+                font-size: 32px;
+                font-weight: 600;
+                line-height: 120%;
+                letter-spacing: -0.64px;
+                color: $purple;
+            }
+
+            p {
+                font-size: 18px;
+                font-weight: 500;
+                line-height: 140%;
+                letter-spacing: -0.36px
+            }
+        }
+    }
+
+    &__guidelines {
+        margin-bottom: 56px;
+
+        h2 {
+            font-size: 32px;
+            line-height: 140%;
+            font-weight: 500;
+            letter-spacing: -0.64px;
+            margin-bottom: 32px;
+        }
+    }
+
+    &__faq {
+        h2 {
+            font-size: 32px;
+            line-height: 140%;
+            font-weight: 500;
+            letter-spacing: -0.64px;
+            margin-bottom: 32px;
+        }
+
+        &-item {
+            margin-bottom: 32px;
+            border-bottom: 1px solid $black;
+
+            &-heading {
+                h3 {
+                    margin-bottom: 32px;
+                }
+            }
+
+            &-content {
+                padding-bottom: 32px;
+            }
+        }
+    }
+}

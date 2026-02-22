@@ -1,0 +1,24 @@
+{
+    "name": "acf/experiments-options",
+    "title": "Experiments Options",
+    "description": "Theme styled Experiments Options block.",
+    "category": "custom-layout",
+    "icon": "text",
+    "keywords": ["experiments", "options", "faq", "step", "tab", "accordion"],
+    "acf": {
+        "mode": "auto",
+        "renderTemplate": "experiments-options.php"
+    },
+    "align": "full",
+    "supports" : {
+        "anchor" : true
+    },
+    "example": {
+        "attributes": {
+            "mode" : "preview",
+            "data" : {
+                "preview_image" : "experiments-options/preview.png"
+            }
+        }
+    }
+}
