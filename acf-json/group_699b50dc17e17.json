@@ -1,0 +1,47 @@
+{
+    "key": "group_699b50dc17e17",
+    "title": "BLOCK - Campaign Listing",
+    "fields": [
+        {
+            "key": "field_699b50dd5b2e4",
+            "label": "Intro Block",
+            "name": "intro_block",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "<p style=\"margin-bottom: 0;\">To be part of the movement:<\/p>\r\n<ol>\r\n    <li>1. Pick a post and click the download or social share icon to post to the social network of your choice.<\/li>\r\n    <li>2. Post with the message YOU want LinkedIn to hear.<\/li>\r\n    <li>3. Add the #FairnessInTheFeed hashtag<\/li>\r\n    <li>4. Pop in the link to the website so everyone can join in: https:\/\/fairnessinthefeed.com<\/li>\r\n<\/ol>\r\n<p style=\"margin-top: 0;\">Let's shout so loud LinkedIn can't ignore us!<\/p>\r\n<p><a href=\"#!\" class=\"button button-border\">Sign The Petition<\/a><\/p>",
+            "allow_in_bindings": 0,
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/campaign-listing"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "display_title": "",
+    "modified": 1771786649
+}

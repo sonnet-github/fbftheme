@@ -1,0 +1,24 @@
+{
+    "name": "acf/campaign-listing",
+    "title": "Campaign Listing",
+    "description": "Theme styled Campaign Listing block.",
+    "category": "custom-layout",
+    "icon": "text",
+    "keywords": ["campaign", "listing", "wysiwyg"],
+    "acf": {
+        "mode": "auto",
+        "renderTemplate": "campaign-listing.php"
+    },
+    "align": "full",
+    "supports" : {
+        "anchor" : true
+    },
+    "example": {
+        "attributes": {
+            "mode" : "preview",
+            "data" : {
+                "preview_image" : "campaign-listing/preview.png"
+            }
+        }
+    }
+}

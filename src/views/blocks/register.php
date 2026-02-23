@@ -17,7 +17,8 @@
             'join-the-campaign',
             'join-the-experiments',
             'testimonial-listing',
-            'experiments-options'
+            'experiments-options',
+            'campaign-listing'
         ];
 
         foreach($acf_blocks as $block){
