@@ -39,9 +39,6 @@
     add_theme_support( 'yoast-seo-breadcrumbs' );
     add_theme_support( 'post-thumbnails' );
 
-    /* SDEV Bootstrap */
-    require_once('lib/sdev/sdev.php');
-
     /* Register ACF Blocks */
     require_once('src/views/blocks/register.php');
 
@@ -52,12 +49,10 @@
     function front_assets(){
         wp_register_style( 'google-fonts', 'https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap' );
         wp_register_style( 'fontawesome', 'https://use.fontawesome.com/releases/v5.7.2/css/all.css' );
-
-        wp_register_style( 'reset-css', \SDEV\Utils::getThemeResourcePath( 'assets/css/reset.css' ) );
-        wp_register_style( 'sdev-theme-style', \SDEV\Utils::getThemeResourcePath( 'dist/style.css' ), array(), rand(111,9999), 'all' );
-        wp_register_script( 'sdev-theme-script', \SDEV\Utils::getThemeResourcePath( 'dist/bundle.js' ), array('jquery'), rand(111,9999), true );
-
-        wp_enqueue_style( 'reset-css' );
+        
+        wp_register_style( 'sdev-theme-style', get_template_directory_uri().'/dist/style.css' , array(), rand(111,9999), 'all' );
+        wp_register_script( 'sdev-theme-script', get_template_directory_uri().'/dist/bundle.js', array('jquery'), rand(111,9999), true );
+        
         wp_enqueue_style( 'sdev-theme-style' );
         wp_enqueue_script( 'sdev-theme-script' );
         wp_enqueue_style( 'google-fonts');

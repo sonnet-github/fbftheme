@@ -17,7 +17,7 @@
 ?>
 
     <?php if(have_rows('experiment_option_tabs')): ?>
-        <div class="experiment-options">
+        <div class="experiment-options js-tabs">
             <div class="experiment-options__tab">
                 <div class="experiment-options__tab-wrap">
                     <div class="max-wrap margin-auto">
@@ -30,7 +30,7 @@
                                     $urlHeading = trim($urlHeading, "-");
                                     ?>
 
-                                <div class="experiment-options__tab-heading-item">
+                                <div class="experiment-options__tab-heading-item<?=($x == 1) ? ' active' : '';?> js-tab-heading">
                                     <a href="#<?=$urlHeading?>"><span class="hide-mobile"><?=$desktopHeading?></span><span class="hide-desktop show-mobile"><?=get_sub_field('tab_heading_mobile')?></span></a>
                                 </div>
 
@@ -50,7 +50,7 @@
                                 $urlHeading = strtolower(preg_replace('/[^a-zA-Z0-9]+/', '-', $desktopHeading));
                                 $urlHeading = trim($urlHeading, "-");
                              ?>
-                            <div class="experiment-options__tab-items" id="<?=$urlHeading?>">
+                            <div class="experiment-options__tab-items<?=($x == 1) ? ' active' : '';?> js-tab-content" id="<?=$urlHeading?>">
                                 <div class="experiment-options__tab-items-inner">
                                     <div class="experiment-options__tab-description">
                                         <?=get_sub_field('tab_description');?>
@@ -80,20 +80,23 @@
                                     <?php endif; ?>
 
                                     <?php if(get_sub_field('faqs_heading')): ?>
-                                        <div class="experiment-options__faq">
+                                        <div class="experiment-options__faq js-accordions">
                                             <div class="experiment-options__faq-heading">
                                                 <h2><?=get_sub_field('faqs_heading')?></h2>
                                             </div>
 
                                             <div class="experiment-options__faq-content">
                                                 <?php while(have_rows('faqs_content')): the_row(); ?>
-                                                    <div class="experiment-options__faq-item">
-                                                        <div class="experiment-options__faq-item-heading">
+                                                    <div class="experiment-options__faq-item js-accordion-item">
+                                                        <div class="experiment-options__faq-item-heading js-accordion-heading">
                                                             <h3><?=get_sub_field('heading')?></h3>
+                                                            <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 10L8 6L12 10" stroke-width="2" stroke-linecap="square" stroke-linejoin="round"/></svg></span>
                                                         </div>
 
                                                         <div class="experiment-options__faq-item-content">
-                                                            <?=get_sub_field('content')?>
+                                                            <div class="experiment-options__faq-item-content-inner">
+                                                                <?=get_sub_field('content')?>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 <?php endwhile; ?>
@@ -108,6 +111,7 @@
                                     <?php endif; ?>
                                 </div>
                             </div>
+                            <?php $x++; ?>
                         <?php endwhile ?>
                     </div>
                 </div>

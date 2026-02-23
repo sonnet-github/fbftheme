@@ -1,5 +1,9 @@
 @use './variables' as *;
 
+:root {
+  interpolate-size: allow-keywords;
+}
+
 body {
     font-family: $fontInter;
     background-color: $bgColor;
