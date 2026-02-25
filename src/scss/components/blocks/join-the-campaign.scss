@@ -3,19 +3,37 @@
 .join-the-campaign {    
     padding-bottom: 56px;
 
+    @media (max-width: 767px) {
+        padding-bottom: 40px;
+    }
+
     &__inner {
         padding-bottom: 56px;
         border-bottom: 1px solid $black;
+
+        @media (max-width: 767px) {
+            padding-bottom: 40px;
+        }
     }
 
     &__videos {
         gap: 24px;
         margin-top: 56px;
         margin-bottom: 56px;
+
+        @media (max-width: 767px) {
+            flex-wrap: wrap;
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
     }
 
     &__video {
         width: calc((100% - 48px) / 3);
+
+        @media (max-width: 767px) {
+            width: 100%;
+        }
 
         &-item {
             position: relative;

@@ -10,6 +10,14 @@
     &__item {
         width: calc((100% - 72px) / 4);
 
+        @media (max-width: 991px) {
+            width: calc((100% - 48px) / 3);
+        }
+
+        @media (max-width: 767px) {
+            width: 100%;
+        }
+
         &-inner {
             position: relative;
             width: 100%;

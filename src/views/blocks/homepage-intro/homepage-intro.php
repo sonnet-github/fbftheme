@@ -27,14 +27,22 @@
                 <div class="homepage-intro__left">
                     <h1><?=get_field('left_heading')?></h1>
                     <?php if(get_field('button_1')): ?>
+                        <p class="hide-mobile"><a href="<?=get_field('button_1')['url']?>" class="button button-border"><?=get_field('button_1')['title']?></a></p>
+                    <?php endif; ?>
+                    <?php if(get_field('button_2')): ?>
+                        <p class="hide-mobile"><a href="<?=get_field('button_2')['url']?>" class="button button-border"><?=get_field('button_2')['title']?></a></p>
+                    <?php endif; ?>
+                </div>
+                <div class="homepage-intro__right">
+                    <?=get_field('wysiwyg_content')?>
+                </div>
+                <div class="hide-desktop">
+                    <?php if(get_field('button_1')): ?>
                         <p><a href="<?=get_field('button_1')['url']?>" class="button button-border"><?=get_field('button_1')['title']?></a></p>
                     <?php endif; ?>
                     <?php if(get_field('button_2')): ?>
                         <p><a href="<?=get_field('button_2')['url']?>" class="button button-border"><?=get_field('button_2')['title']?></a></p>
                     <?php endif; ?>
-                </div>
-                <div class="homepage-intro__right">
-                    <?=get_field('wysiwyg_content')?>
                 </div>
             </div>
         </div>
