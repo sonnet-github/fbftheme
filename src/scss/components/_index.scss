@@ -5,6 +5,8 @@
 @forward "page";
 @forward "single";
 @forward "chart";
+@forward "popup";
+@forward "form";
 
 // BLOCKS
 @forward "blocks/full-width-banner";
@@ -16,3 +18,4 @@
 @forward "blocks/testimonial";
 @forward "blocks/experiment-options";
 @forward "blocks/campaign-listing";
+@forward "blocks/register-login";

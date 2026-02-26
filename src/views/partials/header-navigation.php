@@ -22,7 +22,7 @@
                     )) ?>
                 </div>
                 <div class="header-right">
-                    <a href="#!" class="button button-border button-nav">Log In / Register</a>
+                    <a href="#register-login" class="button button-border button-nav js-popup">Log In / Register</a>
                 </div>
             </div>
             <div class="header-mobile">

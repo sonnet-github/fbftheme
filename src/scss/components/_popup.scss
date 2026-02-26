@@ -1,0 +1,65 @@
+@use '../globals/variables' as *;
+
+.active-popup {
+    position: relative;
+    overflow: hidden;
+}
+
+.popup-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    opacity: 0;
+    z-index: -99999;
+
+    .active-popup &.current-popup-active {
+        opacity: 1;
+        z-index: 99999;
+    }
+
+    h2 {
+        margin-bottom: 56px;
+        color: $purple;
+
+        @media (max-width: 767px) {
+            margin-bottom: 32px;
+        }
+    }
+
+    &__inner {
+        position: relative;
+        height: 100%;
+        width: 100%;
+        overflow: auto;
+    }
+
+    &__wrap {
+        background-color: $bgColor;
+        margin-top: auto;
+        margin-bottom: auto;
+        padding: 56px;
+        border-radius: 8px;
+        max-width: 578px;
+        position: relative;
+
+        @media (max-width: 767px) {
+            padding: 56px 16px
+        }
+    }
+
+    .popup-close {
+        position: absolute;
+        top: 24px;
+        right: 24px;
+        z-index: 1;
+    }
+
+    @media (max-width: 767px) {
+        .max-wrap {
+            padding: 8px
+        }
+    }
+}

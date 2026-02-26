@@ -1,0 +1,103 @@
+@use '../globals/variables' as *;
+
+.form-container {
+    .form-row {
+        display: flex;
+        width: 100%;
+        gap: 16px;
+        margin-bottom: 24px;
+
+        &--gap {
+            margin-bottom: 32px;
+        }
+
+        @media (max-width: 767px) {
+            flex-wrap: wrap;
+        }
+    }
+
+    .form-col {
+        width: 100%;
+    }
+
+    label {
+        display: block;
+        width: 100%;
+        color: $grey;
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 150%;
+        letter-spacing: -0.24px;
+        margin-bottom: 8px;
+    }
+
+    select,
+    input {
+        display: block;
+        width: 100%;
+        outline: none;
+        border: 0;
+        padding: 0;
+        margin: 0;
+        background-color: transparent;
+        font-size: 14px;
+        color: $black;
+        font-weight: 600;
+        line-height: 150%;
+        letter-spacing: -0.28px;
+        font-family: $fontInter;
+        border-bottom: 1px solid $black;
+        padding-bottom: 7px;
+
+        &::placeholder {
+            color: $black;
+        }
+    }
+
+    select {
+        padding-bottom: 9px;
+    }
+
+    .input-checkbox {
+        input {
+            display: none;
+        }
+
+        label {
+            position: relative;
+            display: block;
+            padding-left: 24px;
+
+            &:after,
+            &:before {
+                content: '';
+                width: 16px;
+                height: 16px;
+                left: 0;
+                top: 0;
+                background-size: cover;
+                position: absolute;
+            }
+
+            &:before {
+                background-image: url('~/assets/images/icon-checkbox.svg');
+            }
+
+            &:after {
+                background-image: url('~/assets/images/icon-checkbox-filled.svg');
+                opacity: 0;
+                transition: $transition;
+            }
+        }
+
+        input {
+            &:checked {
+                & + label {
+                    &:after {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+}
