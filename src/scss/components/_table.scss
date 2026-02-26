@@ -1,0 +1,33 @@
+@use '../globals/variables' as *;
+
+table {
+    width: 100%;
+
+    td {
+        padding-top: 16px;
+        padding-bottom: 16px;
+        font-family: $fontInter;
+        font-size: 14px;
+        letter-spacing: -0.28px;
+        font-weight: 500;
+        color: $black;
+
+        &:first-child {
+            color: $grey;
+        }
+
+        &:last-child {
+            text-align: right;
+        }
+    }
+    
+    tr {
+        border-bottom: 1px solid $grey;
+
+        &:first-child {
+            td {
+                padding-top: 0;
+            }
+        }
+    }
+}

@@ -1,0 +1,34 @@
+@use '../globals/variables' as *;
+
+.profile-container {
+    padding-top: 80px;
+    padding-bottom: 80px;
+
+    &__wrap {
+        gap: 24px;
+
+        & > div {
+            width: 100%;
+        }
+
+        @media (max-width: 767px) {
+            flex-wrap: wrap;
+        }
+    }
+
+    &__left {
+        display: flex;
+        flex-direction: column;
+
+        &-footer {
+            margin-top: auto;
+        }
+    }
+
+    &__right {
+        &-footer {
+            margin-top: 32px;
+            text-align: right;
+        }
+    }
+}
