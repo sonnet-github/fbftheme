@@ -13,6 +13,10 @@ const popup = e => {
                 if (targetElem !== undefined && targetElem !== null) {
                     targetElem.classList.add('current-popup-active');
                     body.classList.add('active-popup');
+
+                    if (e.currentTarget.classList.contains('js-popup-login')) {
+                        e.currentTarget.closest('.current-popup-active').classList.remove('current-popup-active');
+                    }
                 }
             });
         });

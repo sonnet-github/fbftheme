@@ -306,7 +306,35 @@
                     <div class="form-row">
                         <div class="form-col form-col--button">
                             <a href="#!" class="button button-border">Submit</a>
-                            <span>Have an account? <a href="/login/">Log in</a>.</span>
+                            <span>Have an account? <a href="#login-form" class="js-popup js-popup-login">Log in</a>.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="popup-container login" id="login-form">
+    <div class="popup-container__inner login__inner flex">
+        <div class="margin-auto max-wrap flex">
+            <div class="popup-container__wrap login__wrap flex">
+                <a href="#!" class="popup-close js-close-popup"><img src="<?=get_template_directory_uri()?>/assets/images/icon-close.svg" alt=""></a>
+
+                <div class="form-container">
+                    <h2>Log In</h2>
+
+                    <div class="form-row">
+                        <div class="form-col">
+                            <label for="email-address-login">Email Address</label>
+                            <input type="email" class="form-input" placeholder="Email Address" name="email-address-login" id="email-address-login">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-col form-col--button">
+                            <a href="#!" class="button button-border">Continue</a>
                         </div>
                     </div>
                 </div>

@@ -44,6 +44,7 @@
         border-radius: 8px;
         max-width: 578px;
         position: relative;
+        width: 100%;
 
         @media (max-width: 767px) {
             padding: 56px 16px
@@ -57,9 +58,12 @@
         z-index: 1;
     }
 
-    @media (max-width: 767px) {
-        .max-wrap {
-            padding: 8px
+    .max-wrap {
+        width: 100%;
+        justify-content: center;
+
+        @media (max-width: 767px) {
+            padding: 8px;
         }
     }
 }
