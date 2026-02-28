@@ -1,0 +1,148 @@
+@use '../../globals/variables' as *;
+
+.past-experiments-full {
+    $this: &;
+
+    padding-top: 80px;
+    padding-bottom: 80px;
+
+    @media (max-width: 991px) {
+        padding-top: 46px;
+        padding-bottom: 46px;
+    }
+
+    @media (max-width: 767px) {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+
+    &__heading {
+        margin-bottom: 72px;
+
+        @media (max-width: 991px) {
+            margin-bottom: 46px;
+        }
+
+        @media (max-width: 767px) {
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 16px
+        }
+
+        h1 {
+            margin-bottom: 0;
+            color: $purple;
+
+            @media (max-width: 767px) {
+                width: 100%
+            }
+        }
+    }
+
+    &__wrap {
+        gap: 126px;
+
+        & > div {
+            width: 100%;
+        }
+
+        @media (max-width: 1024px) {
+            gap: 76px
+        }
+
+        @media (max-width: 991px) {
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 767px) {
+            gap: 24px
+        }
+    }
+
+    &__left {
+        &-footer {
+            margin-top: 48px;
+        }
+    }
+
+    &__item {
+        margin-bottom: 72px;
+
+        table {
+            a {
+                color: $black;
+                text-decoration: underline;
+            }
+
+            @media (max-width: 767px) {
+                margin-top: 24px;
+
+                td {
+                    font-size: 13px;
+                    font-weight: 500;
+                    line-height: 140%;
+                    letter-spacing: -0.26px;
+                }
+            }
+        }
+
+        h5,
+        h4 {
+            font-size: 20px;
+            font-weight: 600;
+            line-height: 130%;
+            letter-spacing: -0.4px;
+            color: $black;
+            margin-bottom: 0;
+        }
+
+        h5 {
+            color: $grey;
+        }
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        &--post-analysis {
+            #{$this}__left {
+                display: flex;
+                flex-direction: column
+            }
+
+            #{$this}__analysis {
+                margin-top: auto;
+                margin-bottom: auto;
+
+                h4 {
+                    @media (max-width: 991px) {
+                        margin-top: 24px;
+                        margin-bottom: 24px;
+                    }
+                    
+                    @media (max-width: 767px) {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: baseline;
+                        gap: 16px;
+
+                        .button {
+                            margin-left: 0;
+                        }
+                    }
+                }
+            }
+
+            #{$this}__left-footer {
+                margin-top: auto;
+                padding-bottom: 32px;
+            }
+
+            h4 {
+                .button {
+                    margin-left: 16px
+                }
+            }
+        }
+    }
+}

@@ -8,7 +8,10 @@
 @forward "popup";
 @forward "form";
 @forward "table";
-@forward "profile";
+
+// Pages
+@forward "pages/profile";
+@forward "pages/past-experiments";
 
 // BLOCKS
 @forward "blocks/full-width-banner";

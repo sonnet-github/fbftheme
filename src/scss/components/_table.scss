@@ -2,6 +2,17 @@
 
 table {
     width: 100%;
+    table-layout: fixed;
+
+    th {
+        font-size: 20px;
+        letter-spacing: -0.4px;
+        font-weight: 600;
+        color: $purple;
+        text-align: right;
+        padding-bottom: 24px;
+
+    }
 
     td {
         padding-top: 16px;
@@ -11,13 +22,11 @@ table {
         letter-spacing: -0.28px;
         font-weight: 500;
         color: $black;
+        text-align: right;
 
         &:first-child {
             color: $grey;
-        }
-
-        &:last-child {
-            text-align: right;
+            text-align: left;
         }
     }
     

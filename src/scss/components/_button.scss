@@ -12,6 +12,12 @@
         border: 1px solid $purple;
         border-radius: 8px;
         padding: 8px 16px;
+        line-height: 120%;
+
+        svg {
+            vertical-align: top;
+            margin-right: 8px;
+        }
     }
 
     &-primary {
@@ -29,5 +35,9 @@
 
     &-nav {
         font-size: 16px;
+    }
+
+    &-large {
+        padding: 16px 24px;
     }
 }

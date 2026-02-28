@@ -16,6 +16,10 @@
         border-radius: 8px;
         padding: 16px 0 16px;
         margin-bottom: 8px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
     }
 
     &-description {
@@ -33,6 +37,10 @@
 
     &-bars {
         border-bottom: 1px solid $black;
+
+        &:first-child {
+            padding-top: 7px;
+        }
 
         &-inner {
             display: flex;
@@ -153,6 +161,90 @@
                 @media (max-width: 767px) {
                     width: 39px;
                 }
+            }
+        }
+    }
+
+    &--3 {
+        
+        #{$this} {
+            &-bar {
+                width: 160px;
+
+                @media (max-width: 767px) {
+                    width: 93px;
+                }
+                
+                label {
+                    font-size: 40px;
+                    line-height: 120%;
+                    letter-spacing: -0.8px;
+
+                    @media (max-width: 767px) {
+                        font-size: 20px;
+                        letter-spacing: -0.4px;
+                    }
+                }
+            }
+
+            &-label {
+                width: 160px;
+
+                @media (max-width: 767px) {
+                    width: 93px;
+                }
+            }
+        }
+
+        .chart-bars-inner {
+            gap: 8px;
+            height: 438px;
+
+            @media (max-width: 767px) {
+                height: 144px;
+            }
+        }
+
+        .chart-footer-wrap {
+            gap: 8px
+        }
+    }
+
+    &--4 {
+        #{$this} {
+            &-bar {
+                width: 78px;
+
+                @media (max-width: 767px) {
+                    width: 39px;
+                }
+                
+                label {
+                    font-size: 24px;
+                    line-height: 120%;
+                    letter-spacing: -0.8px;
+
+                    @media (max-width: 767px) {
+                        font-size: 13px;
+                        letter-spacing: -0.26px;
+                    }
+                }
+            }
+
+            &-label {
+                width: 78px;
+
+                @media (max-width: 767px) {
+                    width: 39px;
+                }
+            }
+        }
+
+        .chart-bars-inner {
+            height: 211px;
+
+            @media (max-width: 767px) {
+                height: 108px
             }
         }
     }
