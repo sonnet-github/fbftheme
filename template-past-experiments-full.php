@@ -33,7 +33,7 @@
             
             <div class="past-experiments-full">
                 <div class="max-wrap margin-auto">
-                    <div class="past-experiments-full__heading flex flex-space-between items-center">
+                    <div class="past-experiments-full__heading page-heading flex flex-space-between items-center">
                         <h1>Past Experiments</h1>
                         <a href="#!" class="button button-border"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6.28125 11.2834L2.998 8.00016L6.28125 4.7169" stroke="#6700D6" stroke-width="2" stroke-linecap="square" stroke-linejoin="round"/><path d="M13.668 8.00011L3.81821 8.00011" stroke="#6700D6" stroke-width="2" stroke-linecap="square" stroke-linejoin="round"/></svg> Back to Profile</a>
                     </div>

@@ -134,3 +134,49 @@ img {
         display: block;
     }
 }
+
+#wpadminbar {
+    @media (max-width: 767px) {
+        display: none !important;
+    }
+}
+
+html {
+    @media (max-width: 767px) {
+        margin-top: 0 !important;
+    }
+}
+
+
+
+.page-heading {
+    margin-bottom: 72px;
+
+    @media (max-width: 991px) {
+        margin-bottom: 46px;
+    }
+
+    @media (max-width: 767px) {
+        margin-bottom: 40px;
+        flex-wrap: wrap;
+        gap: 16px
+    }
+
+    h1 {
+        margin-bottom: 0;
+        color: $purple;
+
+        @media (max-width: 991px) {
+            width: 75%;
+        }
+
+        @media (max-width: 767px) {
+            width: 100%
+        }
+    }
+}
+
+ol {
+    list-style: decimal;
+    padding-left: 20px;
+}

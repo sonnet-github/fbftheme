@@ -8,7 +8,6 @@ const accordions = e => {
         trigger.forEach(elem => {
             elem.addEventListener('click', e => {
                 e.preventDefault();
-                console.log('test');
 
                 if (e.currentTarget.classList.contains('active')) {
                     e.currentTarget.classList.remove('active');
