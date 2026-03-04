@@ -86,70 +86,72 @@
 
                                     <div class="submit-results__form">
                                         <div class="form-container">
-                                            <div class="form-row">
-                                                <div class="form-col">
-                                                    <label for="date-of-post">Date of Post</label>
-                                                    <input type="text" placeholder="(DD/MM/YYYY)" name="date-of-post" id="date-of-post" class="form-input">
+                                            <form id="test-a-form">
+                                                <div class="form-row">
+                                                    <div class="form-col">
+                                                        <label for="date-of-post">Date of Post</label>
+                                                        <input type="text" placeholder="(DD/MM/YYYY)" name="date-of-post" id="date-of-post" class="form-input">
+                                                    </div>
+                                                    <div class="form-col">
+                                                        <label for="linkedin-test-post-url">LinkedIn Test Post URL</label>
+                                                        <input type="text" placeholder="LinkedIn Test Post URL" name="linkedin-test-post-url" id="linkedin-test-post-url" class="form-input">
+                                                    </div>
+                                                    <div class="form-col">
+                                                        <label for="no-of-impressions"># of Impressions</label>
+                                                        <input type="text" placeholder="# of Impressions" name="no-of-impressions" id="no-of-impressions" class="form-input">
+                                                    </div>
                                                 </div>
-                                                <div class="form-col">
-                                                    <label for="linkedin-test-post-url">LinkedIn Test Post URL</label>
-                                                    <input type="text" placeholder="LinkedIn Test Post URL" name="linkedin-test-post-url" id="linkedin-test-post-url" class="form-input">
+                                                <div class="form-row">
+                                                    <div class="form-col">
+                                                        <label for="no-of-members-reached"># of Members Reached</label>
+                                                        <input type="text" placeholder="# of Members Reached" name="no-of-members-reached" id="no-of-members-reached" class="form-input">
+                                                    </div>
+                                                    <div class="form-col">
+                                                        <label for="no-of-reactions"># of Reactions</label>
+                                                        <input type="text" placeholder="# of Reactions" name="no-of-reactions" id="no-of-reactions" class="form-input">
+                                                    </div>
+                                                    <div class="form-col">
+                                                        <label for="no-of-comments"># of Comments</label>
+                                                        <input type="text" placeholder="# of Comments" name="no-of-comments" id="no-of-comments" class="form-input">
+                                                    </div>
                                                 </div>
-                                                <div class="form-col">
-                                                    <label for="no-of-impressions"># of Impressions</label>
-                                                    <input type="text" placeholder="# of Impressions" name="no-of-impressions" id="no-of-impressions" class="form-input">
+                                                <div class="form-row">
+                                                    <div class="form-col">
+                                                        <label for="no-of-reports"># of Reposts</label>
+                                                        <input type="text" placeholder="# of Reposts" name="no-of-reports" id="no-of-reports" class="form-input">
+                                                    </div>
+                                                    <div class="form-col">
+                                                        <label for="no-of-saves"># of Saves</label>
+                                                        <input type="text" placeholder="# of Saves" name="no-of-saves" id="no-of-saves" class="form-input">
+                                                    </div>
+                                                    <div class="form-col">
+                                                        <label for="no-of-sends"># of Sends</label>
+                                                        <input type="text" placeholder="# of Sends" name="no-of-sends" id="no-of-sends" class="form-input">
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="form-row">
-                                                <div class="form-col">
-                                                    <label for="no-of-reactions"># of Members Reached</label>
-                                                    <input type="text" placeholder="# of Members Reached" name="no-of-reactions" id="no-of-reactions" class="form-input">
+                                                <div class="form-row form-row--buddy-details-heading">
+                                                    <div class="form-col">
+                                                        <h3>Your Buddy’s Details</h3>
+                                                    </div>
                                                 </div>
-                                                <div class="form-col">
-                                                    <label for="no-of-reactions"># of Reactions</label>
-                                                    <input type="text" placeholder="# of Reactions" name="no-of-reactions" id="no-of-reactions" class="form-input">
+                                                <div class="form-row form-row--buddy-details">
+                                                    <div class="form-col">
+                                                        <label for="buddy-linkedin-profile">Buddy’s LinkedIn Profile URL</label>
+                                                        <input type="text" placeholder="Buddy’s LinkedIn Profile URL" name="buddy-linkedin-profile" id="buddy-linkedin-profile" class="form-input">
+                                                    </div>
+                                                    <div class="form-col">
+                                                        <label for="buddy-linkedin-post">Buddy’s LinkedIn Post URL</label>
+                                                        <input type="text" placeholder="Buddy’s LinkedIn Post URL" name="buddy-linkedin-post" id="buddy-linkedin-post" class="form-input">
+                                                    </div>
+                                                    <div class="form-col hide-mobile"></div>
                                                 </div>
-                                                <div class="form-col">
-                                                    <label for="no-of-comments"># of Comments</label>
-                                                    <input type="text" placeholder="# of Comments" name="no-of-comments" id="no-of-comments" class="form-input">
-                                                </div>
-                                            </div>
-                                            <div class="form-row">
-                                                <div class="form-col">
-                                                    <label for="no-of-reposts"># of Reposts</label>
-                                                    <input type="text" placeholder="# of Reposts" name="no-of-reposts" id="no-of-reposts" class="form-input">
-                                                </div>
-                                                <div class="form-col">
-                                                    <label for="no-of-saves"># of Saves</label>
-                                                    <input type="text" placeholder="# of Saves" name="no-of-saves" id="no-of-saves" class="form-input">
-                                                </div>
-                                                <div class="form-col">
-                                                    <label for="no-of-sends"># of Sends</label>
-                                                    <input type="text" placeholder="# of Sends" name="no-of-sends" id="no-of-sends" class="form-input">
-                                                </div>
-                                            </div>
-                                            <div class="form-row form-row--buddy-details-heading">
-                                                <div class="form-col">
-                                                    <h3>Your Buddy’s Details</h3>
-                                                </div>
-                                            </div>
-                                            <div class="form-row form-row--buddy-details">
-                                                <div class="form-col">
-                                                    <label for="buddy-linkedin-profile">Buddy’s LinkedIn Profile URL</label>
-                                                    <input type="text" placeholder="Buddy’s LinkedIn Profile URL" name="buddy-linkedin-profile" id="buddy-linkedin-profile" class="form-input">
-                                                </div>
-                                                <div class="form-col">
-                                                    <label for="no-of-saves">Buddy’s LinkedIn Post URL</label>
-                                                    <input type="text" placeholder="Buddy’s LinkedIn Post URL" name="no-of-saves" id="no-of-saves" class="form-input">
-                                                </div>
-                                                <div class="form-col hide-mobile"></div>
-                                            </div>
 
-                                            <div class="form-row">
-                                                <div class="form-col form-col--button">
-                                                    <a href="#!" class="button button-border">Submit</a>
+                                                <div class="form-row">
+                                                    <div class="form-col form-col--button">
+                                                        <input type="submit" value="Submit" class="button button-border">
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>

@@ -1,6 +1,6 @@
 <?php 
 /* Template Name: Default Page Template
- * Template Post Type: post, page
+ * Template Post Type: page
  */
 /**
  * Default page template

@@ -8,11 +8,14 @@
 @forward "popup";
 @forward "form";
 @forward "table";
+@forward "login-via-mail";
+@forward "blog-listing";
 
 // Pages
 @forward "pages/profile";
 @forward "pages/past-experiments";
 @forward "pages/test-page";
+@forward "pages/single";
 
 // BLOCKS
 @forward "blocks/full-width-banner";
@@ -25,3 +28,4 @@
 @forward "blocks/experiment-options";
 @forward "blocks/campaign-listing";
 @forward "blocks/register-login";
+@forward "blocks/privacy-terms";

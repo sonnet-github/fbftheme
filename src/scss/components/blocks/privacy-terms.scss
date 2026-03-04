@@ -1,0 +1,118 @@
+@use '../../globals/variables' as *;
+
+.privacy-terms {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    font-size: 20px;
+    line-height: 140%;
+    letter-spacing: -0.4px;
+    font-weight: 500;
+
+    @media (max-width: 991px) {
+        padding-bottom: 40px;
+        padding-top: 40px;
+    }
+
+    @media (max-width: 767px) {
+        font-size: 14px;
+        line-height: 150%;
+        letter-spacing: -0.28px;
+    }
+
+    &__item {
+        margin-bottom: 80px;
+
+        @media (max-width: 991px) {
+            margin-bottom: 40px;
+        }
+    }
+
+    a {
+        color: $black;
+    }
+
+    strong {
+        font-weight: 600;
+    }
+
+    h2 {
+        font-size: 40px;
+        line-height: 120%;
+        letter-spacing: -0.8px;
+        font-weight: 600;
+        margin-bottom: 24px;
+
+        @media (max-width: 767px) {
+            font-size: 24px;
+            font-weight: 600;
+            line-height: 120%;
+            letter-spacing: -0.48px;
+        }
+    }
+
+    h3 {
+        color: $purple;
+        font-size: 32px;
+        font-weight: 500;
+        line-height: 140%;
+        letter-spacing: -0.64px;
+        margin-bottom: 24px;
+        margin-top: 56px;
+
+        @media (max-width: 767px) {
+            font-size: 20px;
+            line-height: 120%;
+            letter-spacing: -0.4px;
+            margin-top: 40px;
+        }
+
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+
+    &__heading {
+        padding-bottom: 80px;
+        margin-bottom: 80px;
+        border-bottom: 1px solid $black;
+
+        @media (max-width: 991px) {
+            padding-bottom: 40px;
+            margin-bottom: 40px;
+        }
+
+        &-wrap {
+            display: flex;
+            justify-content: space-between;
+
+            @media (max-width: 991px) {
+                flex-wrap: wrap;
+            }
+        }
+
+        &-item {
+            @media (max-width: 991px) {
+                width: 100%;
+                margin-bottom: 8px;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+
+    ol {
+        &.abc {
+            ul {
+                padding-left: 8px;
+            }
+        }
+    }
+
+    ul {
+        list-style: disc;
+        padding-left: 30px;
+        margin-bottom: 24px;
+    }
+}

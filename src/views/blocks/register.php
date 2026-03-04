@@ -18,7 +18,8 @@
             'join-the-experiments',
             'testimonial-listing',
             'experiments-options',
-            'campaign-listing'
+            'campaign-listing',
+            'privacy-policy-terms-use',
         ];
 
         foreach($acf_blocks as $block){

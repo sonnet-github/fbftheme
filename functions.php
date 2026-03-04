@@ -52,9 +52,14 @@
         
         wp_register_style( 'sdev-theme-style', get_template_directory_uri().'/dist/style.css' , array(), rand(111,9999), 'all' );
         wp_register_script( 'sdev-theme-script', get_template_directory_uri().'/dist/bundle.js', array('jquery'), rand(111,9999), true );
+
+        wp_localize_script('sdev-theme-script', 'SDEV', [
+            'ajax_url' => admin_url('admin-ajax.php'),
+            'nonce'    => wp_create_nonce('custom_register_nonce')
+        ]);
+        wp_enqueue_script( 'sdev-theme-script' );
         
         wp_enqueue_style( 'sdev-theme-style' );
-        wp_enqueue_script( 'sdev-theme-script' );
         wp_enqueue_style( 'google-fonts');
         wp_enqueue_style( 'fontawesome');
     }
@@ -150,4 +155,291 @@
     }
     add_action('personal_options_update', 'save_gender_field');
     add_action('edit_user_profile_update', 'save_gender_field');
+
+    // Register AJAX actions
+    add_action('wp_ajax_nopriv_custom_register', 'custom_ajax_register');
+    add_action('wp_ajax_custom_register', 'custom_ajax_register');
+
+    function custom_ajax_register() {
+
+        check_ajax_referer('custom_register_nonce', 'security');
+
+        $first_name = sanitize_text_field($_POST['first-name']);
+        $last_name  = sanitize_text_field($_POST['last-name']);
+        $email      = sanitize_email($_POST['email-address']);
+        $gender     = strtolower(sanitize_text_field($_POST['gender']));
+        $linkedin   = strtolower(esc_url_raw($_POST['linkedin-profile-url']));
+        $followers  = intval($_POST['num-of-followers']);
+        $country    = sanitize_text_field($_POST['country-region']);
+
+        if (empty($first_name) || empty($last_name) || empty($email)) {
+            wp_send_json_error(['message' => 'Required fields are missing.']);
+        }
+
+        if (!is_email($email)) {
+            wp_send_json_error(['message' => 'Invalid email address.']);
+        }
+
+        if (email_exists($email)) {
+            wp_send_json_error(['message' => 'Email already registered.']);
+        }
+
+        // Generate username automatically from email
+        $username = sanitize_user(current(explode('@', $email)));
+
+        if (username_exists($username)) {
+            $username = $username . '_' . time();
+        }
+
+        // Generate random password
+        $password = wp_generate_password();
+
+        $user_id = wp_create_user($username, $password, $email);
+
+        if (is_wp_error($user_id)) {
+            wp_send_json_error(['message' => 'Registration failed.']);
+        }
+
+        // Update core fields
+        wp_update_user([
+            'ID'         => $user_id,
+            'first_name' => $first_name,
+            'last_name'  => $last_name,
+        ]);
+
+        // Save custom meta
+        update_user_meta($user_id, 'gender', $gender);
+        update_user_meta($user_id, 'linkedin_url', $linkedin);
+        update_user_meta($user_id, 'linkedin_followers', $followers);
+        update_user_meta($user_id, 'country_region', $country);
+
+        wp_send_json_success(['message' => 'Registration successful.']);
+    }
+
+    // LOGIN Send OTP
+
+    add_action('wp_ajax_nopriv_send_login_code', 'sdev_send_login_code');
+    add_action('wp_ajax_send_login_code', 'sdev_send_login_code');
+
+    function sdev_send_login_code() {
+
+        check_ajax_referer('custom_register_nonce', 'security');
+
+        $email = sanitize_email($_POST['email']);
+
+        if (!is_email($email)) {
+            wp_send_json_error(['message' => 'Invalid email address.']);
+        }
+
+        $user = get_user_by('email', $email);
+
+        // Prevent email enumeration
+        // if (!$user) {
+        //     wp_send_json_success([
+        //         'message' => 'If this email exists, a code has been sent multiple times.'
+        //     ]);
+        // }
+
+        $code = wp_rand(100000, 999999);
+        $expires = time() + (10 * 60); // 10 minutes
+
+        update_user_meta($user->ID, 'login_otp', wp_hash_password($code));
+        update_user_meta($user->ID, 'login_otp_expires', $expires);
+        update_user_meta($user->ID, 'login_otp_attempts', 0);
+
+        wp_mail(
+            $user->user_email,
+            'Your Login Code',
+            "Your login code is: {$code}\n\nThis code expires in 10 minutes."
+        );
+
+        wp_send_json_success([
+            'message' => "If this email exists, a code has been sent. $code"
+        ]);
+    }
+
+    // LOGIN Verify OTP
+
+    add_action('wp_ajax_nopriv_verify_login_code', 'sdev_verify_login_code');
+    add_action('wp_ajax_verify_login_code', 'sdev_verify_login_code');
+
+    function sdev_verify_login_code() {
+
+        check_ajax_referer('custom_register_nonce', 'security');
+
+        $email = sanitize_email($_POST['email']);
+        $code  = sanitize_text_field($_POST['code']);
+
+        $user = get_user_by('email', $email);
+
+        if (!$user) {
+            wp_send_json_error(['message' => 'Invalid or expired code.']);
+        }
+
+        $hashed_code = get_user_meta($user->ID, 'login_otp', true);
+        $expires     = get_user_meta($user->ID, 'login_otp_expires', true);
+        $attempts    = (int) get_user_meta($user->ID, 'login_otp_attempts', true);
+
+        if ($attempts >= 5) {
+            wp_send_json_error(['message' => 'Too many attempts. Try again later.']);
+        }
+
+        update_user_meta($user->ID, 'login_otp_attempts', $attempts + 1);
+
+        if (
+            $hashed_code &&
+            wp_check_password($code, $hashed_code) &&
+            time() < $expires
+        ) {
+
+            delete_user_meta($user->ID, 'login_otp');
+            delete_user_meta($user->ID, 'login_otp_expires');
+            delete_user_meta($user->ID, 'login_otp_attempts');
+
+            wp_set_auth_cookie($user->ID, true);
+
+            wp_send_json_success([
+                'message' => 'Login successful.'
+            ]);
+        }
+
+        wp_send_json_error(['message' => 'Invalid or expired code.']);
+    }
+
+    // Save Post Test A
+    add_action('wp_ajax_submit_test_a', 'sdev_submit_test_a');
+
+    function sdev_submit_test_a() {
+
+        check_ajax_referer('custom_register_nonce', 'security');
+
+        if (!is_user_logged_in()) {
+            wp_send_json_error(['message' => 'You must be logged in.']);
+        }
+
+        $required_fields = [
+            'date_of_post',
+            'linkedin_test_post_url',
+            'no_of_impressions',
+            'no_of_members_reached',
+            'no_of_reactions',
+            'no_of_comments',
+            'no_of_reports',
+            'no_of_saves',
+            'no_of_sends',
+            'buddy_linkedin_profile_url',
+            'buddy_linkedin_post_url'
+        ];
+
+        foreach ($required_fields as $field) {
+            if (!isset($_POST[$field]) || $_POST[$field] === '') {
+                wp_send_json_error([
+                    'message' => 'All fields are required.'
+                ]);
+            }
+        }
+
+        // Validate URLs specifically
+        if (!filter_var($_POST['linkedin_test_post_url'], FILTER_VALIDATE_URL) ||
+            !filter_var($_POST['buddy_linkedin_profile_url'], FILTER_VALIDATE_URL) ||
+            !filter_var($_POST['buddy_linkedin_post_url'], FILTER_VALIDATE_URL)
+        ) {
+            wp_send_json_error([
+                'message' => 'Please enter valid URLs.'
+            ]);
+        }
+
+        $user_id = get_current_user_id();
+
+        $post_id = wp_insert_post([
+            'post_type'   => 'test-a',
+            'post_status' => 'publish',
+            'post_title'  => 'Test A Submission - ' . current_time('Y-m-d H:i:s'),
+            'post_author' => $user_id
+        ]);
+
+        if (is_wp_error($post_id)) {
+            wp_send_json_error(['message' => 'Failed to create post.']);
+        }
+
+        // Save sanitized data
+        update_post_meta($post_id, 'date_of_post', sanitize_text_field($_POST['date_of_post']));
+        update_post_meta($post_id, 'linkedin_test_post_url', esc_url_raw($_POST['linkedin_test_post_url']));
+        update_post_meta($post_id, 'no_of_impressions', intval($_POST['no_of_impressions']));
+        update_post_meta($post_id, 'no_of_members_reached', intval($_POST['no_of_members_reached']));
+        update_post_meta($post_id, 'no_of_reactions', intval($_POST['no_of_reactions']));
+        update_post_meta($post_id, 'no_of_comments', intval($_POST['no_of_comments']));
+        update_post_meta($post_id, 'no_of_reports', intval($_POST['no_of_reports']));
+        update_post_meta($post_id, 'no_of_saves', intval($_POST['no_of_saves']));
+        update_post_meta($post_id, 'no_of_sends', intval($_POST['no_of_sends']));
+        update_post_meta($post_id, 'buddy_linkedin_profile_url', esc_url_raw($_POST['buddy_linkedin_profile_url']));
+        update_post_meta($post_id, 'buddy_linkedin_post_url', esc_url_raw($_POST['buddy_linkedin_post_url']));
+        update_post_meta($post_id, 'user', $user_id);
+
+        wp_send_json_success(['message' => 'Submission saved successfully.']);
+    }
+
+    // Save Post type b
+    add_action('wp_ajax_submit_test_b', 'sdev_submit_test_b');
+
+    function sdev_submit_test_b() {
+
+        check_ajax_referer('custom_register_nonce', 'security');
+
+        if (!is_user_logged_in()) {
+            wp_send_json_error(['message' => 'You must be logged in.']);
+        }
+
+        $required = [
+            'date_of_post',
+            'post_url',
+            'chatgpt_analysis'
+        ];
+
+        foreach ($required as $field) {
+            if (empty($_POST[$field])) {
+                wp_send_json_error(['message' => 'All required fields must be filled.']);
+            }
+        }
+
+        if (empty($_POST['chat_gpt_considers']) || !is_array($_POST['chat_gpt_considers'])) {
+            wp_send_json_error(['message' => 'Please select at least one checklist option.']);
+        }
+
+        // Validate URLs
+        if (!filter_var($_POST['post_url'], FILTER_VALIDATE_URL) ||
+            !filter_var($_POST['chatgpt_analysis'], FILTER_VALIDATE_URL)
+        ) {
+            wp_send_json_error(['message' => 'Please enter valid URLs.']);
+        }
+
+        $allowed_checklist = ['breakout', 'sustained growth', 'contained', 'suppressed'];
+
+        $checklist = array_intersect($_POST['chat_gpt_considers'], $allowed_checklist);
+
+        if (empty($checklist)) {
+            wp_send_json_error(['message' => 'Invalid checklist selection.']);
+        }
+
+        $user_id = get_current_user_id();
+
+        $post_id = wp_insert_post([
+            'post_type'   => 'test-b',
+            'post_status' => 'publish',
+            'post_title'  => 'Test B Submission - ' . current_time('Y-m-d H:i:s'),
+            'post_author' => $user_id
+        ]);
+
+        if (is_wp_error($post_id)) {
+            wp_send_json_error(['message' => 'Failed to create post.']);
+        }
+
+        update_post_meta($post_id, 'date_of_post', sanitize_text_field($_POST['date_of_post']));
+        update_post_meta($post_id, 'post_url', esc_url_raw($_POST['post_url']));
+        update_post_meta($post_id, 'chat_gpt_considers', $checklist);
+        update_post_meta($post_id, 'chatgpt_analysis', esc_url_raw($_POST['chatgpt_analysis']));
+        update_post_meta($post_id, 'user', $user_id);
+
+        wp_send_json_success(['message' => 'Test B submission saved successfully.']);
+    }
 ?>

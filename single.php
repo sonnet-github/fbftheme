@@ -1,9 +1,9 @@
 <?php 
-/* Template Name: Default Single Template
- * Template Post Type: post, page
+/* Template Name: Default Post Template
+ * Template Post Type: post
  */
 /**
- * Default single template
+ * Default Post template
  *
  * @package SDEV
  * @subpackage SDEV WP
@@ -11,13 +11,39 @@
  */
     get_header(); ?>
 
-        <div id="page-content" class="page-blocks" data-tpl="single">
+        <div id="page-content" class="post-blocks" data-tpl="single">
+            <?php while(have_posts()): the_post(); ?>
+                <?php 
+                    $author_id = get_post_field('post_author', get_the_ID());   
+                    $fname = get_the_author_meta('first_name');
+                    $lname = get_the_author_meta('last_name');
+                 ?>
 
-            <?php 
-                
-                the_content();
+                 
+                <div class="max-wrap margin-auto">
+                    <div class="page-heading flex flex-space-between">
+                        <div class="page-heading__left">
+                            <h1><?=get_the_title();?></h1>
 
-            ?>
+                            <div class="single-author">
+                                <h3>By <?=$fname?> <?=$lname?></h3>
+                                <h4>Date of Post: <?=get_the_date('d/m/Y')?></h4>
+                            </div>
+                        </div>
+
+                        <div class="page-heading__right">
+                            <a href="<?=get_home_url()?>/blog/" class="button button-border"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6.28125 11.2834L2.998 8.00016L6.28125 4.7169" stroke="#6700D6" stroke-width="2" stroke-linecap="square" stroke-linejoin="round"/><path d="M13.668 8.00011L3.81821 8.00011" stroke="#6700D6" stroke-width="2" stroke-linecap="square" stroke-linejoin="round"/></svg> Back to All Blog Posts</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="max-wrap margin-auto wysiwyg">
+                    <?php 
+                        
+                        the_content();
+
+                    ?>
+                </div>
+            <?php endwhile; ?>
         
         </div>
 

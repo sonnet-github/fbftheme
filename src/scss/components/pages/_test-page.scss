@@ -1,8 +1,14 @@
 @use '../../globals/variables' as *;
 
+.test-page-b,
 .test-page {
     padding-top: 80px;
     padding-bottom: 80px;
+
+    @media (max-width: 767px) {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
 
     &__tab-heading {
         display: inline-block;
@@ -198,6 +204,58 @@
 
             &--buddy-details {
                 margin-bottom: 56px;
+            }
+        }
+    }
+}
+
+.test-page-b {
+    &__form {
+        margin-top: 48px;
+    }
+
+    .form-container {
+        & > .form-row {
+            justify-content: space-between;
+        }
+    }
+
+    .form-row {
+        &--textarea {
+            max-width: 486px;
+        }
+
+        &--width-384 {
+            max-width: 384px
+        }
+    }
+
+    .form-col {
+        &--width-486 {
+            max-width: 486px;
+        }
+    }
+
+    &__thank-you {
+        display: none;
+        padding-bottom: 261px;
+
+        @media (max-width: 767px) {
+            padding-bottom: 40px;
+        }
+
+        &.active {
+            display: block;
+        }
+
+        h3 {
+            font-size: 20px;
+            line-height: 130%;
+            letter-spacing: -0.4px;
+            font-weight: 600;
+
+            a {
+                color: $purple;
             }
         }
     }

@@ -1,0 +1,24 @@
+{
+    "name": "acf/privacy-policy-terms-use",
+    "title": "Privacy & Terms of Use",
+    "description": "Theme styled Privacy Policy & Terms of Use block.",
+    "category": "custom-layout",
+    "icon": "text",
+    "keywords": ["wysiwyg", "text", "rich text", "privacy", "policy", "term", "use"],
+    "acf": {
+        "mode": "auto",
+        "renderTemplate": "privacy-policy-terms-use.php"
+    },
+    "align": "full",
+    "supports" : {
+        "anchor" : true
+    },
+    "example": {
+        "attributes": {
+            "mode" : "preview",
+            "data" : {
+                "preview_image" : "privacy-policy-terms-use/preview.jpg"
+            }
+        }
+    }
+}

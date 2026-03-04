@@ -1,0 +1,41 @@
+@use '../globals/variables' as *;
+
+.blog-listing {
+    padding-top: 80px;
+    padding-bottom: 80px;
+
+    @media (max-width: 767px) {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+
+    &__wrap {
+        gap: 120px 24px;
+    }
+
+    &__item {
+        width: calc((100% - 24px) / 2);
+
+        h2 {
+            font-size: 32px;
+            font-weight: 600;
+            line-height: 120%;
+            letter-spacing: -0.64px;
+            margin-bottom: 24px;
+
+            a {
+                text-decoration: none;
+                color: $black;
+            }
+        }
+
+        h3 {
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 150%;
+            letter-spacing: -0.28px;
+            color: $black;
+            margin-bottom: 24px;
+        }
+    }
+}
