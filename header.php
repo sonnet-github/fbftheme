@@ -17,7 +17,7 @@
 			get_template_part('src/views/partials/header', 'before-body'); 
 		?>
 	</head>
-    <body <?php body_class(); ?>>
+    <body <?php body_class(''); ?>>
 		
 		<?php get_template_part('src/views/partials/header', 'body-start'); ?>
 

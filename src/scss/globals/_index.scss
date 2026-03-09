@@ -237,3 +237,26 @@ em {
         }
     }
 }
+
+.delete-account {
+    h3 {
+        color: $purple;
+        margin-bottom: 32px;
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 140%;
+        letter-spacing: -0.48px;
+    }
+
+    &__buttons {
+        align-items: center;
+        gap: 16px;
+
+        a {
+            text-decoration: none;
+            color: $purple;
+            font-size: 14px;
+            font-weight: 600;
+        }
+    }
+}

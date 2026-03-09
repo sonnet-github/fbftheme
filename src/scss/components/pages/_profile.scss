@@ -16,12 +16,23 @@
         }
     }
 
+    &__test-1 {
+        margin-bottom: 24px;
+    }
+
     &__left {
         display: flex;
         flex-direction: column;
 
         &-footer {
             margin-top: auto;
+            
+            a {
+                color: $purple;
+                font-size: 14px;
+                font-weight: 600;
+                line-height: 120%;
+            }
         }
     }
 
@@ -29,6 +40,15 @@
         &-footer {
             margin-top: 32px;
             text-align: right;
+            gap: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: end;
+
+            a {
+                color: $purple;
+                text-decoration: none;
+            }
         }
     }
 }

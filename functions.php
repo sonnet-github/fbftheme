@@ -442,4 +442,91 @@
 
         wp_send_json_success(['message' => 'Test B submission saved successfully.']);
     }
+
+    // Delete user functionality
+    add_action('wp_ajax_delete_my_account', 'sdev_delete_my_account');
+
+    function sdev_delete_my_account() {
+        check_ajax_referer('custom_register_nonce', 'security');
+
+        if (!is_user_logged_in()) {
+            wp_send_json_error(['message' => 'You must be logged in.']);
+        }
+
+        $user_id = get_current_user_id();
+
+        // Allow subscriber to delete their own account
+        if (!current_user_can('delete_users')) {
+            // temporarily grant permission for this action
+            $user = wp_get_current_user();
+            $user->add_cap('delete_users');
+        }
+
+        require_once(ABSPATH . 'wp-admin/includes/user.php');
+
+        // Delete user and optionally reassign posts
+        $reassign_to = 1; // admin user id
+        $result = wp_delete_user($user_id, $reassign_to);
+
+        // Remove temporary capability if added
+        if (isset($user) && isset($user->caps['delete_users'])) {
+            $user->remove_cap('delete_users');
+        }
+
+        if ($result) {
+            wp_send_json_success(['message' => 'Your account has been deleted.']);
+        } else {
+            wp_send_json_error(['message' => 'Failed to delete your account.']);
+        }
+    }
+
+    add_action('wp_ajax_update_profile', 'sdev_update_profile');
+
+    function sdev_update_profile() {
+        check_ajax_referer('custom_register_nonce', 'security');
+
+        if (!is_user_logged_in()) {
+            wp_send_json_error(['message' => 'You must be logged in.']);
+        }
+
+        $user_id = get_current_user_id();
+
+        // Sanitize and validate
+        $first_name      = isset($_POST['first_name']) ? sanitize_text_field($_POST['first_name']) : '';
+        $last_name       = isset($_POST['last_name']) ? sanitize_text_field($_POST['last_name']) : '';
+        $gender          = isset($_POST['gender']) ? sanitize_text_field($_POST['gender']) : '';
+        $linkedin_url    = isset($_POST['linkedin_url']) ? esc_url_raw($_POST['linkedin_url']) : '';
+        $linkedin_followers = isset($_POST['linkedin_followers']) ? intval($_POST['linkedin_followers']) : 0;
+        $country_region  = isset($_POST['country_region']) ? sanitize_text_field($_POST['country_region']) : '';
+
+        // Required validation
+        if (!$first_name || !$last_name || !$gender || !$linkedin_url || !$linkedin_followers || !$country_region) {
+            wp_send_json_error(['message' => 'All fields are required.']);
+        }
+
+        // Validate URL
+        if (!filter_var($linkedin_url, FILTER_VALIDATE_URL)) {
+            wp_send_json_error(['message' => 'Please enter a valid LinkedIn URL.']);
+        }
+
+        // Validate followers
+        if ($linkedin_followers < 0) {
+            wp_send_json_error(['message' => 'Followers must be a positive number.']);
+        }
+
+        // Update core WP user fields
+        wp_update_user([
+            'ID'         => $user_id,
+            'first_name' => $first_name,
+            'last_name'  => $last_name
+        ]);
+
+        // Update user meta fields
+        update_user_meta($user_id, 'gender', $gender);
+        update_user_meta($user_id, 'linkedin_url', $linkedin_url);
+        update_user_meta($user_id, 'linkedin_followers', $linkedin_followers);
+        update_user_meta($user_id, 'country_region', $country_region);
+
+        wp_send_json_success(['message' => 'Profile updated successfully.']);
+    }
 ?>

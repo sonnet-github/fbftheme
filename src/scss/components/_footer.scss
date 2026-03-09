@@ -5,6 +5,10 @@ footer {
     color: $white;
     padding-top: 40px;
     padding-bottom: 40px;
+    
+    img {
+        vertical-align: middle;
+    }
 
     .footer-content {
         font-size: 13px;
@@ -16,6 +20,23 @@ footer {
 
         ul {
             gap: 24px;
+            width: 100%;
+
+            li {
+                &:last-child {
+                    margin-left: auto;
+                }
+            }
+
+            @media (max-width: 767px) {
+                flex-wrap: wrap;
+
+                li {
+                    &:first-child {
+                        width: 100%;
+                    }
+                }
+            }
         }
     }
 }

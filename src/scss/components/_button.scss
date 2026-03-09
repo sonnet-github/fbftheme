@@ -18,6 +18,11 @@
             vertical-align: top;
             margin-right: 8px;
         }
+
+        &.button-red {
+            color: $red;
+            border-color: $red;
+        }
     }
 
     &-primary {
@@ -39,5 +44,9 @@
 
     &-large {
         padding: 16px 24px;
+    }
+
+    &.button-red {
+        color: $red;
     }
 }

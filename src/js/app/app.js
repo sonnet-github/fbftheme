@@ -6,6 +6,7 @@ import customRegister from './components/CustomRegister';
 import loginViaEmail from './components/LoginViaEmail';
 import saveTestA from './components/SaveTestA';
 import saveTestB from './components/SaveTestB';
+import deleteAccount from './components/DeleteAccount';
 
 document.addEventListener("DOMContentLoaded", function () {
     tabs();
@@ -16,4 +17,5 @@ document.addEventListener("DOMContentLoaded", function () {
     loginViaEmail();
     saveTestA();
     saveTestB();
+    deleteAccount();
 });
