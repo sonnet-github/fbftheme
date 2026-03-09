@@ -19,7 +19,7 @@
                 <div class="max-wrap margin-auto">
                     <div class="page-heading flex flex-space-between items-center">
                         <h1><?=get_the_title();?></h1>
-                        <a href="#!" class="button button-border"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6.28125 11.2834L2.998 8.00016L6.28125 4.7169" stroke="#6700D6" stroke-width="2" stroke-linecap="square" stroke-linejoin="round"/><path d="M13.668 8.00011L3.81821 8.00011" stroke="#6700D6" stroke-width="2" stroke-linecap="square" stroke-linejoin="round"/></svg> Back to Profile</a>
+                        <a href="<?=get_site_url()?>/profile/" class="button button-border"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6.28125 11.2834L2.998 8.00016L6.28125 4.7169" stroke="#6700D6" stroke-width="2" stroke-linecap="square" stroke-linejoin="round"/><path d="M13.668 8.00011L3.81821 8.00011" stroke="#6700D6" stroke-width="2" stroke-linecap="square" stroke-linejoin="round"/></svg> Back to Profile</a>
                     </div>
 
                     <div class="test-page-b__inner js-form-container">
@@ -63,8 +63,8 @@
                                                             <label for="contained">Contained</label>
                                                         </div>
                                                         <div class="checklist-item">
-                                                            <input type="checkbox" value="suppresed" id="suppresed" name="chat_gpt_considers">
-                                                            <label for="suppresed">Suppressed</label>
+                                                            <input type="checkbox" value="suppressed" id="suppressed" name="chat_gpt_considers">
+                                                            <label for="suppressed">Suppressed</label>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -92,7 +92,7 @@
 
                     <div class="test-page-b__thank-you js-thank-you-container">
                         <h3>Thank you for submitting your results.<br /> 
-                        View this experiment on your <a href="#!">Past Experiments</a> page.</h3>
+                        View this experiment on your <a href="<?=get_site_url()?>/past-experiments-full/">Past Experiments</a> page.</h3>
                     </div>
                 </div>
             </div>

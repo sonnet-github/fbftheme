@@ -38,15 +38,15 @@
                             <h1>Welcome, <?=$first_name?> <?=$last_initial?></h1>
                             <div class="profile-container__test-1">
                                 <p>Test A: “The Identical Content Test”</p>
-                                <p><a href="#!" class="button button-primary">Participate or Log Results <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.0517 11.2832L13.335 7.99999L10.0517 4.71674M2.66499 7.99994L12.5147 7.99994" stroke="white" stroke-width="2" stroke-linecap="square" stroke-linejoin="round"/></svg></a></p>
+                                <p><a href="<?=get_site_url()?>/test-a-the-identical-content-test/" class="button button-primary">Participate or Log Results <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.0517 11.2832L13.335 7.99999L10.0517 4.71674M2.66499 7.99994L12.5147 7.99994" stroke="white" stroke-width="2" stroke-linecap="square" stroke-linejoin="round"/></svg></a></p>
                             </div>
                             
                             <div class="profile-container__test-2">
                                 <p>Test B: “The 7th Tribe Pattern Recognition Test”</p>
-                                <p><a href="#!" class="button button-primary">Participate or Log Results <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.0517 11.2832L13.335 7.99999L10.0517 4.71674M2.66499 7.99994L12.5147 7.99994" stroke="white" stroke-width="2" stroke-linecap="square" stroke-linejoin="round"/></svg></a></p>
+                                <p><a href="<?=get_site_url();?>/test-b-the-7th-tribe-pattern-recognition-test/" class="button button-primary">Participate or Log Results <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.0517 11.2832L13.335 7.99999L10.0517 4.71674M2.66499 7.99994L12.5147 7.99994" stroke="white" stroke-width="2" stroke-linecap="square" stroke-linejoin="round"/></svg></a></p>
                             </div>
                             <div class="profile-container__left-footer">
-                                <a href="#!">Past Experiments (6)</a>
+                                <a href="<?=get_site_url()?>/past-experiments-full/">Past Experiments (6)</a>
                             </div>
                         </div>
                         <div class="profile-container__right">

@@ -35,7 +35,7 @@
                 <div class="max-wrap margin-auto">
                     <div class="past-experiments-full__heading page-heading flex flex-space-between items-center">
                         <h1>Past Experiments</h1>
-                        <a href="#!" class="button button-border"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6.28125 11.2834L2.998 8.00016L6.28125 4.7169" stroke="#6700D6" stroke-width="2" stroke-linecap="square" stroke-linejoin="round"/><path d="M13.668 8.00011L3.81821 8.00011" stroke="#6700D6" stroke-width="2" stroke-linecap="square" stroke-linejoin="round"/></svg> Back to Profile</a>
+                        <a href="<?=get_site_url()?>/profile/" class="button button-border"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6.28125 11.2834L2.998 8.00016L6.28125 4.7169" stroke="#6700D6" stroke-width="2" stroke-linecap="square" stroke-linejoin="round"/><path d="M13.668 8.00011L3.81821 8.00011" stroke="#6700D6" stroke-width="2" stroke-linecap="square" stroke-linejoin="round"/></svg> Back to Profile</a>
                     </div>
                     <div class="past-experiments-full__items">
                         <div class="past-experiments-full__item">
@@ -117,6 +117,48 @@
                             </div>
                         </div>
                         
+                        <?php 
+                            $allItems = [];
+                            $itemSum = 0;
+                            $args = array(
+                                'post_type' => 'test-b',
+                                'posts_per_page' => -1
+                            );
+                            $query = new WP_Query($args);
+
+                            if ($query->have_posts()) {
+
+                                while($query->have_posts()): $query->the_post();
+                                    $theArray = get_field('chat_gpt_considers', get_the_ID());
+
+                                    if ($theArray) {
+                                        foreach ($theArray as $item) {
+                                            $itemSum++;
+                                            $allItems[] = $item; // collect everything
+                                        }
+                                    }
+                                endwhile;
+                            }
+
+                            // count occurrences
+                            $counts = array_count_values($allItems);
+                            $maxNum = max($allItems);
+                            $maxVal = 0;
+
+                            // display
+                            foreach ($counts as $label => $total) {
+                                echo $label . ': ' . $total . '<br>';
+                            }
+                         ?>
+
+                        <p><?=$itemSum?></p>
+                        <p>Max Num: <?=$counts[$maxNum]?></p>
+
+                        <p>Breakout: <?=$counts['breakout']?></p>
+                        <p>Sustained Growth: <?=$counts['sustained growth']?></p>
+                        <p>Contained: <?=$counts['contained']?></p>
+                        <p>Suppressed: <?=$counts['suppressed']?></p>
+
                         <div class="past-experiments-full__item past-experiments-full__item--post-analysis">
                             <div class="past-experiments-full__wrap flex flex-space-between">
                                 <div class="past-experiments-full__left">
@@ -134,24 +176,24 @@
                                         <div class="chart-content">
                                             <div class="chart-bars">
                                                 <div class="chart-bars-inner">
-                                                    <div class="chart-bar chart-bar--purple" style="height: calc((30 / 30) * 100%);">
+                                                    <div class="chart-bar chart-bar--purple" style="height: calc((<?=$counts['breakout']?> / <?=$counts[$maxNum]?>) * 100%);">
                                                         <div class="chart-bar-label">
-                                                            <label>30%</label>
+                                                            <label><?=ceil(($counts['breakout']/$itemSum) * 100)?>%</label>
                                                         </div>
                                                     </div>
-                                                    <div class="chart-bar" style="height: calc((30 / 30) * 100%);">
+                                                    <div class="chart-bar" style="height: calc((<?=$counts['sustained growth']?> / <?=$counts[$maxNum]?>) * 100%);">
                                                         <div class="chart-bar-label">
-                                                            <label>30%</label>
+                                                            <label><?=ceil(($counts['sustained growth']/$itemSum) * 100)?>%</label>
                                                         </div>
                                                     </div>
-                                                    <div class="chart-bar chart-bar--black" style="height: calc((15 / 30) * 100%);">
+                                                    <div class="chart-bar chart-bar--black" style="height: calc((<?=$counts['contained']?> / <?=$counts[$maxNum]?>) * 100%);">
                                                         <div class="chart-bar-label">
-                                                            <label>15%</label>
+                                                            <label><?=ceil(($counts['contained']/$itemSum) * 100)?>%</label>
                                                         </div>
                                                     </div>
-                                                    <div class="chart-bar chart-bar--bordered" style="height: calc((25 / 30) * 100%);">
+                                                    <div class="chart-bar chart-bar--bordered" style="height: calc((<?=$counts['suppressed']?> / <?=$counts[$maxNum]?>) * 100%);">
                                                         <div class="chart-bar-label">
-                                                            <label>25%</label>
+                                                            <label><?=ceil(($counts['suppressed']/$itemSum) * 100)?>%</label>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -168,13 +210,13 @@
                                                         Contained
                                                     </div>
                                                     <div class="chart-label">
-                                                        Suppresed
+                                                        Suppressed
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="chart-description">
-                                            <p>Total experiment results across 20 participants as of 08/11/2025.</p>
+                                            <p>Total experiment results across <?=$itemSum?> participants as of <?=date('d/m/Y')?>.</p>
                                         </div>
                                     </div>
                                 </div>

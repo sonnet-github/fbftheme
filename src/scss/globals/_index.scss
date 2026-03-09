@@ -260,3 +260,17 @@ em {
         }
     }
 }
+
+#page-content {
+    padding-top: 115.2px;
+
+    @media (max-width: 767px) {
+        padding-top: 71.2px;
+    }
+}
+
+@media (max-width: 767px) {
+    .mb-40 {
+        margin-bottom: 40px !important;
+    }
+}

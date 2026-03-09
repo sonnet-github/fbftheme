@@ -66,7 +66,7 @@
                             <p>Based on 134<br />experiments to date</p>
                         </div>
                         <div class="chart-button">
-                            <a href="#!" class="button button-border">Test A: “The Identical Content Test”</a>
+                            <a href="<?=get_site_url()?>/test-a-the-identical-content-test/" class="button button-border">Test A: “The Identical Content Test”</a>
                         </div>
                     </div>
 
@@ -121,7 +121,7 @@
                             <p>Based on 15,342<br />experiments to date</p>
                         </div>
                         <div class="chart-button">
-                            <a href="#!" class="button button-border">Test B: “The 7th Tribe Pattern Recognition Test”</a>
+                            <a href="<?=get_site_url()?>/test-b-the-7th-tribe-pattern-recognition-test/" class="button button-border">Test B: “The 7th Tribe Pattern Recognition Test”</a>
                         </div>
                     </div>
                 </div>
