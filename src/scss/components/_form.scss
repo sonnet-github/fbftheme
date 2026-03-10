@@ -279,6 +279,8 @@
 }
 
 .form-message {
+    color: $purple;
+    
     &.error {
         color: red;
     }

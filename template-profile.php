@@ -20,6 +20,35 @@
     $country_region = get_user_meta($user_id, 'country_region', true);
     $last_initial = !empty($last_name) ? strtoupper(substr($last_name, 0, 1)) . '.' : '';
 
+    
+    $argsTestA = array(
+        'post_type' => 'test-a',
+        'posts_per_page' => 1,
+        'meta_query' => array(
+            array(
+                'key'   => 'user',
+                'value' => $user_id,
+                'compare' => '='
+            )
+        )
+    );
+    $queryTestA = new WP_Query($argsTestA);
+
+    $argsTestB = array(
+        'post_type' => 'test-b',
+        'posts_per_page' => -1,
+        'meta_query' => array(
+            array(
+                'key'   => 'user',
+                'value' => $user_id,
+                'compare' => '='
+            )
+        )
+    );
+
+    $queryTestB = new WP_Query($argsTestB);
+
+    $total_num_post = $queryTestA->post_count + $queryTestB->post_count;
 
     get_header(); ?>
 
@@ -46,7 +75,7 @@
                                 <p><a href="<?=get_site_url();?>/test-b-the-7th-tribe-pattern-recognition-test/" class="button button-primary">Participate or Log Results <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.0517 11.2832L13.335 7.99999L10.0517 4.71674M2.66499 7.99994L12.5147 7.99994" stroke="white" stroke-width="2" stroke-linecap="square" stroke-linejoin="round"/></svg></a></p>
                             </div>
                             <div class="profile-container__left-footer">
-                                <a href="<?=get_site_url()?>/past-experiments-full/">Past Experiments (6)</a>
+                                <a href="<?=get_site_url()?>/past-experiments-full/">Past Experiments (<?=$total_num_post?>)</a>
                             </div>
                         </div>
                         <div class="profile-container__right">
