@@ -529,4 +529,36 @@
 
         wp_send_json_success(['message' => 'Profile updated successfully.']);
     }
+
+    function remove_subscriber_admin_bar() {
+        $current_user = wp_get_current_user();
+        if (count($current_user->roles) == 1 && $current_user->roles[0] == 'subscriber') {
+            show_admin_bar(false);
+        }
+    }
+    add_action('wp_loaded', 'remove_subscriber_admin_bar');
+
+    add_action('template_redirect', 'sdev_redirect_if_not_logged_in');
+
+    function sdev_redirect_if_not_logged_in() {
+
+        if (is_user_logged_in()) {
+            return;
+        }
+
+        $restricted_pages = [
+            '/test-a-the-identical-content-test/',
+            '/test-b-the-7th-tribe-pattern-recognition-test/',
+            '/profile/'
+        ];
+
+        $current_url = $_SERVER['REQUEST_URI'];
+
+        foreach ($restricted_pages as $page) {
+            if (strpos($current_url, $page) !== false) {
+                wp_redirect(home_url());
+                exit;
+            }
+        }
+    }
 ?>

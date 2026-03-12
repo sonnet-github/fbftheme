@@ -1,3 +1,5 @@
+import {validateFields} from "./../helper";
+
 const loginViaEmail = e => {
     const formContainer = document.querySelector('#login-form');
 
@@ -12,8 +14,16 @@ const loginViaEmail = e => {
         
         btnContinue.addEventListener('click', async e => {
             e.preventDefault();
+            const inputFields = formContainer.querySelectorAll('.active .required-field');
+
+            if (inputFields.length) {
+                if (validateFields(inputFields)) {
+                    return;
+                }
+            }
             
             if (inputEmail.value.trim()) {
+
                 const response = await sendLoginCode(inputEmail.value);
                 console.log(response, "Send Login Code");
 
@@ -28,10 +38,24 @@ const loginViaEmail = e => {
 
         btnLogIn.addEventListener('click',async () => {
             const response = await verifyLoginCode(inputEmail.value, inputLoginCode.value);
+
+            const inputFields = formContainer.querySelectorAll('.active .required-field');
+
+            if (inputFields.length) {
+                if (validateFields(inputFields)) {
+                    return;
+                }
+            }
+
             if (response.success) {
                 window.location.reload(); // or redirect
             } else {
-                alert(response.data.message);
+                const span = document.createElement('span');
+                span.className = 'error-msg';
+                span.textContent = response.data.message;
+
+                formContainer.querySelector('.active .form-input.required-field').insertAdjacentElement('afterend', span);
+                // alert(response.data.message);
             }
         });
     }

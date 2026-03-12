@@ -1,3 +1,5 @@
+import { validateFields } from "./../helper";
+
 const saveTestB = e => {
 
     const form = document.querySelector('#test-b-form');
@@ -5,14 +7,34 @@ const saveTestB = e => {
 
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
+        const checklistContainer = document.querySelector('.form-row--checklist .form-col');
+        
+        if (checklistContainer.querySelector('.error-msg')) {
+            checklistContainer.querySelector('.error-msg').remove();
+        }
 
         const checklist = Array.from(
             document.querySelectorAll('input[name="chat_gpt_considers"]:checked')
         ).map(el => el.value);
 
+        const inputFields = form.querySelectorAll('.required-field');
+
         if (checklist.length === 0) {
-            alert('Please select at least one checklist option.');
+
+            const span = document.createElement('span');
+            span.className = 'error-msg';
+            span.textContent = 'Please select at least one checklist option.';
+
+            checklistContainer.append(span);
+            validateFields(inputFields);
+
             return;
+        }
+
+        if (inputFields.length) {
+            if (validateFields(inputFields)) {
+                return;
+            }
         }
 
         const formData = new FormData();

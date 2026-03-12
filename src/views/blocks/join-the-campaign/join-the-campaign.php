@@ -39,7 +39,7 @@
                     </div>
 
                     <div class="join-the-campaign__button">
-                        <a href="#!" class="button button-border">Pick your post</a>
+                        <a href="/experiments/" class="button button-border">Pick your post</a>
                     </div>
                 <?php endif; ?>
             </div>

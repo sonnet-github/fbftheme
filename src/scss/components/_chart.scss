@@ -59,6 +59,11 @@
         background-color: $white;
         border-radius: 8px 8px 0 0;
         padding-top: 16px;
+        min-height: 20%;
+
+        @media (max-width: 767px) {
+            min-height: 36%;
+        }
 
         label {
             font-weight: 600;

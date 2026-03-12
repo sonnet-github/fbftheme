@@ -81,7 +81,7 @@
                         <div id="submit-results" class="test-page__tab-item js-tab-content">
                             <div class="test-page__tab-item-inner">
                                 
-                                <div class="submit-results">
+                                <div class="submit-results js-form-container">
                                     <h2>Your Results</h2>
 
                                     <div class="submit-results__form">
@@ -90,43 +90,43 @@
                                                 <div class="form-row">
                                                     <div class="form-col">
                                                         <label for="date-of-post">Date of Post</label>
-                                                        <input type="text" placeholder="(DD/MM/YYYY)" name="date-of-post" id="date-of-post" class="form-input">
+                                                        <input type="date" placeholder="" name="date-of-post" id="date-of-post" class="form-input required-field">
                                                     </div>
                                                     <div class="form-col">
                                                         <label for="linkedin-test-post-url">LinkedIn Test Post URL</label>
-                                                        <input type="text" placeholder="LinkedIn Test Post URL" name="linkedin-test-post-url" id="linkedin-test-post-url" class="form-input">
+                                                        <input type="text" placeholder="LinkedIn Test Post URL" name="linkedin-test-post-url" id="linkedin-test-post-url" class="form-input required-field">
                                                     </div>
                                                     <div class="form-col">
                                                         <label for="no-of-impressions"># of Impressions</label>
-                                                        <input type="text" placeholder="# of Impressions" name="no-of-impressions" id="no-of-impressions" class="form-input">
+                                                        <input type="text" placeholder="# of Impressions" name="no-of-impressions" id="no-of-impressions" class="form-input required-field">
                                                     </div>
                                                 </div>
                                                 <div class="form-row">
                                                     <div class="form-col">
                                                         <label for="no-of-members-reached"># of Members Reached</label>
-                                                        <input type="text" placeholder="# of Members Reached" name="no-of-members-reached" id="no-of-members-reached" class="form-input">
+                                                        <input type="text" placeholder="# of Members Reached" name="no-of-members-reached" id="no-of-members-reached" class="form-input required-field">
                                                     </div>
                                                     <div class="form-col">
                                                         <label for="no-of-reactions"># of Reactions</label>
-                                                        <input type="text" placeholder="# of Reactions" name="no-of-reactions" id="no-of-reactions" class="form-input">
+                                                        <input type="text" placeholder="# of Reactions" name="no-of-reactions" id="no-of-reactions" class="form-input required-field">
                                                     </div>
                                                     <div class="form-col">
                                                         <label for="no-of-comments"># of Comments</label>
-                                                        <input type="text" placeholder="# of Comments" name="no-of-comments" id="no-of-comments" class="form-input">
+                                                        <input type="text" placeholder="# of Comments" name="no-of-comments" id="no-of-comments" class="form-input required-field">
                                                     </div>
                                                 </div>
                                                 <div class="form-row">
                                                     <div class="form-col">
                                                         <label for="no-of-reports"># of Reposts</label>
-                                                        <input type="text" placeholder="# of Reposts" name="no-of-reports" id="no-of-reports" class="form-input">
+                                                        <input type="text" placeholder="# of Reposts" name="no-of-reports" id="no-of-reports" class="form-input required-field">
                                                     </div>
                                                     <div class="form-col">
                                                         <label for="no-of-saves"># of Saves</label>
-                                                        <input type="text" placeholder="# of Saves" name="no-of-saves" id="no-of-saves" class="form-input">
+                                                        <input type="text" placeholder="# of Saves" name="no-of-saves" id="no-of-saves" class="form-input required-field">
                                                     </div>
                                                     <div class="form-col">
                                                         <label for="no-of-sends"># of Sends</label>
-                                                        <input type="text" placeholder="# of Sends" name="no-of-sends" id="no-of-sends" class="form-input">
+                                                        <input type="text" placeholder="# of Sends" name="no-of-sends" id="no-of-sends" class="form-input required-field">
                                                     </div>
                                                 </div>
                                                 <div class="form-row form-row--buddy-details-heading">
@@ -137,11 +137,11 @@
                                                 <div class="form-row form-row--buddy-details">
                                                     <div class="form-col">
                                                         <label for="buddy-linkedin-profile">Buddy’s LinkedIn Profile URL</label>
-                                                        <input type="text" placeholder="Buddy’s LinkedIn Profile URL" name="buddy-linkedin-profile" id="buddy-linkedin-profile" class="form-input">
+                                                        <input type="text" placeholder="Buddy’s LinkedIn Profile URL" name="buddy-linkedin-profile" id="buddy-linkedin-profile" class="form-input required-field">
                                                     </div>
                                                     <div class="form-col">
                                                         <label for="buddy-linkedin-post">Buddy’s LinkedIn Post URL</label>
-                                                        <input type="text" placeholder="Buddy’s LinkedIn Post URL" name="buddy-linkedin-post" id="buddy-linkedin-post" class="form-input">
+                                                        <input type="text" placeholder="Buddy’s LinkedIn Post URL" name="buddy-linkedin-post" id="buddy-linkedin-post" class="form-input required-field">
                                                     </div>
                                                     <div class="form-col hide-mobile"></div>
                                                 </div>
@@ -154,6 +154,10 @@
                                             </form>
                                         </div>
                                     </div>
+                                </div>
+
+                                <div class="submit-results--thank-you-message js-thank-you-message hidden">
+                                    <h6>Thank you for submitting your results. When your buddy submits theirs, you'll be able to see the results in a graph <a href="<?=get_site_url()?>/past-experiments-full/">here.</a></h6>
                                 </div>
 
                             </div>

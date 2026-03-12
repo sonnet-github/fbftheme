@@ -2,6 +2,10 @@
 
 .form-container {
     width: 100%;
+
+    input[type=date] {
+        text-transform: uppercase;
+    }
     
     .forminator-row,
     .form-row {

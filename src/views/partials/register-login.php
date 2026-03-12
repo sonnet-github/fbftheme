@@ -12,22 +12,22 @@
                         <div class="form-row">
                             <div class="form-col">
                                 <label for="first-name">First Name</label>
-                                <input type="text" placeholder="First Name" name="first-name" id="first-name" class="form-input">
+                                <input type="text" placeholder="First Name" name="first-name" id="first-name" class="required-field form-input">
                             </div>
                             <div class="form-col">
                                 <label for="last-name">Last Name</label>
-                                <input type="text" placeholder="Last Name" name="last-name" id="last-name" class="form-input">
+                                <input type="text" class="required-field" placeholder="Last Name" name="last-name" id="last-name" class="required-field form-input">
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-col">
                                 <label for="email-address">Email Address</label>
-                                <input type="email" class="form-input" placeholder="Email Address" name="email-address" id="email-address">
+                                <input type="email" class="required-field form-input" placeholder="Email Address" name="email-address" id="email-address">
                             </div>
                             <div class="form-col">
                                 <label for="gender">Gender</label>
-                                <select name="gender" id="gender">
+                                <select name="gender" class="required-field" id="gender">
                                     <option value="">Gender</option>
                                     <option value="male">Male</option>
                                     <option value="female">Female</option>
@@ -39,18 +39,18 @@
                         <div class="form-row form-row--gap">
                             <div class="form-col">
                                 <label for="linkedin-profile-url">LinkedIn Profile URL</label>
-                                <input type="text" class="form-input" placeholder="LinkedIn Profile URL" name="linkedin-profile-url" id="linkedin-profile-url">
+                                <input type="text" class="required-field form-input" placeholder="LinkedIn Profile URL" name="linkedin-profile-url" id="linkedin-profile-url">
                             </div>
                         </div>
 
                         <div class="form-row form-row--gap">
                             <div class="form-col">
                                 <label for="num-of-followers"># of Followers</label>
-                                <input type="number" class="form-input" placeholder="# of Followers" id="num-of-followers" name="num-of-followers">
+                                <input type="number" class="required-field form-input" placeholder="# of Followers" id="num-of-followers" name="num-of-followers">
                             </div>
                             <div class="form-col">
                                 <label for="country-region">Country/Region</label>
-                                <select name="country-region" id="country-region">
+                                <select name="country-region" class="required-field" id="country-region">
                                     <?php get_template_part('src/views/partials/country-choices'); ?>
                                 </select>
                             </div>
@@ -91,7 +91,7 @@
                             <div class="form-row">
                                 <div class="form-col">
                                     <label for="email-address-login">Email Address</label>
-                                    <input type="email" class="form-input" placeholder="Email Address" name="email-address-login" id="email-address-login">
+                                    <input type="email" class="form-input required-field" placeholder="Email Address" name="email-address-login" id="email-address-login">
                                 </div>
                             </div>
 
@@ -112,7 +112,7 @@
 
                             <div class="form-row">
                                 <div class="form-col">
-                                    <input type="text" class="form-input" placeholder="Enter Your Code" name="login-code" id="login-code">
+                                    <input type="text" class="form-input required-field" placeholder="Enter Your Code" name="login-code" id="login-code">
                                 </div>
                             </div>
 
@@ -162,13 +162,13 @@
 </div>
 
 <?php
-$current_user = wp_get_current_user();
-$email = $current_user->user_email;
-$current_user_id = get_current_user_id();
-$current_country = get_user_meta($current_user_id, 'country_region', true);
-$gender = get_user_meta($current_user_id, 'gender', true);
-$linkedinUrl = get_user_meta($current_user_id, 'linkedin_url', true);
-$linkedinFollowers = get_user_meta($current_user_id, 'linkedin_followers', true);
+    $current_user = wp_get_current_user();
+    $email = $current_user->user_email;
+    $current_user_id = get_current_user_id();
+    $current_country = get_user_meta($current_user_id, 'country_region', true);
+    $gender = get_user_meta($current_user_id, 'gender', true);
+    $linkedinUrl = get_user_meta($current_user_id, 'linkedin_url', true);
+    $linkedinFollowers = get_user_meta($current_user_id, 'linkedin_followers', true);
 ?>
 
 <div class="popup-container update-profile" id="update-profile">
@@ -179,60 +179,62 @@ $linkedinFollowers = get_user_meta($current_user_id, 'linkedin_followers', true)
                     <a href="#!" class="popup-close js-close-popup"><img src="<?=get_template_directory_uri()?>/assets/images/icon-close.svg" alt=""></a>
                     <h2>Update Profile</h2>
                     <div class="form-container">
-                        <div class="form-message js-form-message"></div>
+                        <form id="profile-form">
+                            <div class="form-message js-form-message"></div>
 
-                        <div class="form-row">
-                            <div class="form-col">
-                                <label for="first-name">First Name</label>
-                                <input type="text" value="<?php echo esc_attr(get_user_meta($current_user_id, 'first_name', true)); ?>" placeholder="First Name" name="first-name" id="first-name" class="form-input">
+                            <div class="form-row">
+                                <div class="form-col">
+                                    <label for="first_name">First Name</label>
+                                    <input type="text" value="<?php echo esc_attr(get_user_meta($current_user_id, 'first_name', true)); ?>" placeholder="First Name" name="first_name" id="first_name" class="form-input required-field">
+                                </div>
+                                <div class="form-col">
+                                    <label for="last_name">Last Name</label>
+                                    <input type="text" value="<?php echo esc_attr(get_user_meta($current_user_id, 'last_name', true)); ?>" placeholder="Last Name" name="last_name" id="last_name" class="form-input required-field">
+                                </div>
                             </div>
-                            <div class="form-col">
-                                <label for="last-name">Last Name</label>
-                                <input type="text" value="<?php echo esc_attr(get_user_meta($current_user_id, 'last_name', true)); ?>" placeholder="Last Name" name="last-name" id="last-name" class="form-input">
-                            </div>
-                        </div>
 
-                        <div class="form-row">
-                            <div class="form-col">
-                                <label for="email-address">Email Address</label>
-                                <input type="email" value="<?php echo $email; ?>" disabled class="form-input" placeholder="Email Address <?php echo $email; ?>" name="email-address" id="email-address">
+                            <div class="form-row">
+                                <div class="form-col">
+                                    <label for="email-address">Email Address</label>
+                                    <input type="email" value="<?php echo $email; ?>" disabled class="form-input" placeholder="Email Address <?php echo $email; ?>" name="email-address" id="email-address">
+                                </div>
+                                <div class="form-col">
+                                    <label for="gender">Gender</label>
+                                    <select name="gender" class="required-field" id="gender">
+                                        <option value="">Gender</option>
+                                        <option <?php selected($gender, "male") ?>value="male">Male</option>
+                                        <option <?php selected($gender, "female") ?>value="female">Female</option>
+                                        <option <?php selected($gender, "other") ?>value="other">Other</option>
+                                    </select>
+                                </div>
                             </div>
-                            <div class="form-col">
-                                <label for="gender">Gender</label>
-                                <select name="gender" id="gender">
-                                    <option value="">Gender</option>
-                                    <option <?php selected($gender, "male") ?>value="male">Male</option>
-                                    <option <?php selected($gender, "female") ?>value="female">Female</option>
-                                    <option <?php selected($gender, "other") ?>value="other">Other</option>
-                                </select>
-                            </div>
-                        </div>
 
-                        <div class="form-row form-row--gap">
-                            <div class="form-col">
-                                <label for="linkedin-profile-url">LinkedIn Profile URL</label>
-                                <input type="text" class="form-input" value="<?=$linkedinUrl?>" placeholder="LinkedIn Profile URL" name="linkedin-profile-url" id="linkedin-profile-url">
+                            <div class="form-row form-row--gap">
+                                <div class="form-col">
+                                    <label for="linkedin_url">LinkedIn Profile URL</label>
+                                    <input type="text" class="form-input required-field" value="<?=$linkedinUrl?>" placeholder="LinkedIn Profile URL" name="linkedin_url" id="linkedin_url">
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-row form-row--gap">
-                            <div class="form-col">
-                                <label for="num-of-followers"># of Followers</label>
-                                <input type="number" class="form-input" value="<?=$linkedinFollowers?>" placeholder="# of Followers" id="num-of-followers" name="num-of-followers">
+                            <div class="form-row form-row--gap">
+                                <div class="form-col">
+                                    <label for="linkedin_followers"># of Followers</label>
+                                    <input type="number" class="form-input required-field" value="<?=$linkedinFollowers?>" placeholder="# of Followers" id="linkedin_followers" name="linkedin_followers">
+                                </div>
+                                <div class="form-col">
+                                    <label for="country_region">Country/Region</label>
+                                    <select name="country_region" class="required-field" id="country_region">
+                                        <?php get_template_part('src/views/partials/country-choices'); ?>
+                                    </select>
+                                </div>
                             </div>
-                            <div class="form-col">
-                                <label for="country-region">Country/Region</label>
-                                <select name="country-region" id="country-region">
-                                    <?php get_template_part('src/views/partials/country-choices'); ?>
-                                </select>
-                            </div>
-                        </div>
 
-                        <div class="form-row">
-                            <div class="form-col form-col--button flex">
-                                <input type="submit" class="button button-border" value="Submit">
+                            <div class="form-row">
+                                <div class="form-col form-col--button flex">
+                                    <input type="submit" class="button button-border" value="Submit">
+                                </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>

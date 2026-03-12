@@ -28,6 +28,35 @@
                         <p><a href="<?=get_field('button_1')['url']?>" class="button button-border"><?=get_field('button_1')['title']?></a></p>
                     <?php endif; ?>
                 </div>
+
+                <?php
+                    $args = [
+                        'number' => -1 // get all users
+                    ];
+                    $male = 0;
+                    $female = 0;
+                    $maleHeight = 0;
+                    $femaleHeight = 0;
+
+                    $user_query = new WP_User_Query($args);
+
+                    if (!empty($user_query->results)) {
+                        foreach ($user_query->results as $user) {
+                            if (get_field('gender', 'user_' . $user->ID) === 'male') {
+                                $male++;
+                            } else {
+                                $female++;
+                            }
+                        }
+                        if ($male > $female) {
+                            $femaleHeight = (($female / $male) * 100);
+                            $maleHeight = 100;
+                        } else {
+                            $maleHeight = (($male / $female) * 100);
+                            $femaleHeight = 100;
+                        }
+                    }
+                 ?>
                 
                 <div class="join-the-experiment__charts flex flex-space-between">
                     <div class="chart chart--1">
@@ -37,14 +66,14 @@
                             </div>
                             <div class="chart-bars">
                                 <div class="chart-bars-inner">
-                                    <div class="chart-bar chart-bar--purple" style="height: 100%">
+                                    <div class="chart-bar chart-bar--purple" style="height: <?=$maleHeight?>%">
                                         <div class="chart-bar-label">
-                                            <label>100%</label>
+                                            <label><?=$maleHeight?>%</label>
                                         </div>
                                     </div>
-                                    <div class="chart-bar" style="height: 55%">
+                                    <div class="chart-bar" style="height: <?=$femaleHeight?>%">
                                         <div class="chart-bar-label">
-                                            <label>55%</label>
+                                            <label><?=$femaleHeight?>%</label>
                                         </div>
                                     </div>
                                 </div>

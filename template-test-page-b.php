@@ -37,13 +37,13 @@
                                             <div class="form-row form-row--width-384">
                                                 <div class="form-col">
                                                     <label for="date-of-post">Date of Post</label>
-                                                    <input type="text" placeholder="(DD/MM/YYYY)" name="date-of-post" id="date-of-post" class="form-input">
+                                                    <input type="date" placeholder="(DD/MM/YYYY)" name="date-of-post" id="date-of-post" class="form-input required-field">
                                                 </div>
                                             </div>
                                             <div class="form-row form-row--width-384">
                                                 <div class="form-col">
                                                     <label for="post-url">Post URL</label>
-                                                    <input type="text" placeholder="Post URL" name="post-url" id="post-url" class="form-input">
+                                                    <input type="text" placeholder="Post URL" name="post-url" id="post-url" class="form-input required-field">
                                                 </div>
                                             </div>
                                             <div class="form-row form-row--checklist">
@@ -74,7 +74,7 @@
                                             <div class="form-row form-row--textarea">
                                                 <div class="form-col">
                                                     <label for="chat-gpt-url">Paste the ChatGPT analysis of your post in the box below:</label>
-                                                    <textarea name="chat-gpt-url" id="chat-gpt-url"></textarea>
+                                                    <textarea class="required-field" name="chat-gpt-url" id="chat-gpt-url"></textarea>
                                                 </div>
                                             </div>
                                         </div>

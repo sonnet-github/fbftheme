@@ -59,4 +59,19 @@
             }
         }
     }
+
+    &__right-thank-you {
+        margin-bottom: 24px;
+
+        h6 {
+            color: $purple;
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 120%;
+
+            @media (max-width: 767px) {
+                font-size: 14px;
+            }
+        }
+    }
 }

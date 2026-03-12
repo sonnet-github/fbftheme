@@ -7,6 +7,7 @@ import loginViaEmail from './components/LoginViaEmail';
 import saveTestA from './components/SaveTestA';
 import saveTestB from './components/SaveTestB';
 import deleteAccount from './components/DeleteAccount';
+import updateUser from './components/UpdateUser';
 
 document.addEventListener("DOMContentLoaded", function () {
     tabs();
@@ -18,4 +19,5 @@ document.addEventListener("DOMContentLoaded", function () {
     saveTestA();
     saveTestB();
     deleteAccount();
+    updateUser();
 });

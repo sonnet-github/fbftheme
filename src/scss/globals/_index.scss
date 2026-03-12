@@ -261,6 +261,14 @@ em {
     }
 }
 
+.error-msg {
+    display: inline-block;
+    color: red;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 120%;
+}
+
 #page-content {
     padding-top: 115.2px;
 

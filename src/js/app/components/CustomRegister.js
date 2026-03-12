@@ -1,3 +1,5 @@
+import {validateFields} from "./../helper";
+
 const customRegister = e => {
     const form = document.querySelector('#form-register');
     const formMessageContainer = form.querySelector('.js-form-message');
@@ -6,6 +8,15 @@ const customRegister = e => {
 
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
+        const inputFields = form.querySelectorAll('.required-field');
+
+        if (inputFields.length) {
+
+            if (validateFields(inputFields)) {
+                return;
+            }
+            
+        }
 
         const formData = new FormData(form);
         formData.append('action', 'custom_register');
@@ -25,6 +36,7 @@ const customRegister = e => {
             if (result.success) {
                 formMessageContainer.innerHTML = "<p>" + result.data.message + "</p>";
                 form.reset();
+
             } else {
                 formMessageContainer.classList.add('error');
                 formMessageContainer.innerHTML = "<p>" + result.data.message + "</p>";
