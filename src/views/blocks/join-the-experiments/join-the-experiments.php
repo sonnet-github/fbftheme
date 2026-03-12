@@ -68,12 +68,12 @@
                                 <div class="chart-bars-inner">
                                     <div class="chart-bar chart-bar--purple" style="height: <?=$maleHeight?>%">
                                         <div class="chart-bar-label">
-                                            <label><?=$maleHeight?>%</label>
+                                            <label><?=ceil($maleHeight)?>%</label>
                                         </div>
                                     </div>
                                     <div class="chart-bar" style="height: <?=$femaleHeight?>%">
                                         <div class="chart-bar-label">
-                                            <label><?=$femaleHeight?>%</label>
+                                            <label><?=ceil($femaleHeight)?>%</label>
                                         </div>
                                     </div>
                                 </div>

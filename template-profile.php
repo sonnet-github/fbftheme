@@ -82,27 +82,27 @@
                             <table>
                                 <tr>
                                     <td>Name</td>
-                                    <td style="text-transform: capitalize;"><?=$first_name?> <?=$last_name?></td>
+                                    <td class="js-firstname" style="text-transform: capitalize;"><?=$first_name?> <?=$last_name?></td>
                                 </tr>
                                 <tr>
                                     <td>Email Address</td>
-                                    <td><?=$email?></td>
+                                    <td style="word-break: break-all;"><?=$email?></td>
                                 </tr>
                                 <tr>
                                     <td>Gender</td>
-                                    <td style="text-transform: capitalize;"><?=$gender?></td>
+                                    <td class="js-gender" style="text-transform: capitalize;"><?=$gender?></td>
                                 </tr>
                                 <tr>
                                     <td>LinkedIn Profile URL</td>
-                                    <td><?=$linkedin_url?></td>
+                                    <td style="word-break: break-all;" class="js-linkedinurl"><?=$linkedin_url?></td>
                                 </tr>
                                 <tr>
                                     <td># of Followers</td>
-                                    <td><?=$linkedin_followers?></td>
+                                    <td class="js-linkedinfollowers"><?=$linkedin_followers?></td>
                                 </tr>
                                 <tr>
                                     <td>Country/Region</td>
-                                    <td style="text-transform: capitalize;"><?=$country_region?></td>
+                                    <td class="js-countryregion" style="text-transform: capitalize;"><?=$country_region?></td>
                                 </tr>
                             </table>
 

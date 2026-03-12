@@ -14,6 +14,21 @@ const updateUser = e => {
 
             if (result.success) {
                 // alert(result.data.message);
+                if (document.querySelector('.profile-container__right-thank-you')) {
+                    document.querySelector('.profile-container__right-thank-you').remove();
+                }
+                const firstname = form.querySelector('#first_name').value;
+                const lastname = form.querySelector('#last_name').value;
+                const gender = form.querySelector('#gender').value;
+                const linkedinurl = form.querySelector('#linkedin_url').value;
+                const linkedin_followers = form.querySelector('#linkedin_followers').value;
+                const country_region = form.querySelector('#country_region').value;
+
+                document.querySelector('.js-firstname').innerText = `${firstname} ${lastname}`;
+                document.querySelector('.js-gender').innerText = `${gender}`;
+                document.querySelector('.js-linkedinurl').innerText = `${linkedinurl}`;
+                document.querySelector('.js-linkedinfollowers').innerText = `${linkedin_followers}`;
+                document.querySelector('.js-countryregion').innerText = `${country_region}`;
 
                 document.querySelector('body').classList.remove('active-popup');
                 const formContainer = document.querySelector('.profile-container__right');

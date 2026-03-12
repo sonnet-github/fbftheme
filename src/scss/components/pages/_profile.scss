@@ -31,6 +31,10 @@
 
         &-footer {
             margin-top: auto;
+
+            @media (max-width: 767px) {
+                margin-top: 40px;
+            }
             
             a {
                 color: $purple;
