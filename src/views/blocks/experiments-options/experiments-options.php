@@ -49,6 +49,7 @@
                                 $desktopHeading = get_sub_field('tab_heading_desktop'); 
                                 $urlHeading = strtolower(preg_replace('/[^a-zA-Z0-9]+/', '-', $desktopHeading));
                                 $urlHeading = trim($urlHeading, "-");
+                                $n = ($x == 1) ? "a" : "b";
                              ?>
                             <div class="experiment-options__tab-items<?=($x == 1) ? ' active' : '';?> js-tab-content" id="<?=$urlHeading?>">
                                 <div class="experiment-options__tab-items-inner">
@@ -74,13 +75,13 @@
                                     </div>
                                     
                                     <?php if(get_sub_field('guidelines')): ?>
-                                        <div class="experiment-options__guidelines">
+                                        <div class="experiment-options__guidelines" id="guidelines-<?=$n?>">
                                             <?=get_sub_field('guidelines')?>
                                         </div>
                                     <?php endif; ?>
 
                                     <?php if(get_sub_field('faqs_heading')): ?>
-                                        <div class="experiment-options__faq js-accordions">
+                                        <div class="experiment-options__faq js-accordions" id="faq-<?=$n?>">
                                             <div class="experiment-options__faq-heading">
                                                 <h2><?=get_sub_field('faqs_heading')?></h2>
                                             </div>

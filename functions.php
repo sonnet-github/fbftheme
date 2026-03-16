@@ -213,6 +213,13 @@
         update_user_meta($user_id, 'linkedin_followers', $followers);
         update_user_meta($user_id, 'country_region', $country);
 
+        // log the user in
+        wp_set_current_user($user_id);
+        wp_set_auth_cookie($user_id);
+
+        // optional: trigger login hook
+        do_action('wp_login', $username, get_user_by('id', $user_id));
+
         wp_send_json_success(['message' => 'Registration successful.']);
     }
 

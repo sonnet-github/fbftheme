@@ -105,7 +105,8 @@
                         <div class="login-via-mail__content js-login-tab-2">
                             <div class="form-row">
                                 <div class="form-col">
-                                    <p>A Log In code has been sent to the following email address</p>
+                                    <p>A Log In code has been sent to the following email address.</p>
+                                    <p style="font-size: .8em;">Please check your spam folder.</p>
                                     <p class="js-login-email"></p>
                                 </div>
                             </div>

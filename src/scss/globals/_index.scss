@@ -4,6 +4,10 @@
   interpolate-size: allow-keywords;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: $fontInter;
     background-color: $bgColor;

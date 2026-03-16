@@ -39,7 +39,7 @@
                             <div class="test-page__tab-item-inner">
                                 <div class="test-page__description">
                                     <h2>Buddy Options</h2>
-                                    <p>Here’s a list of potential buddies from your region who have registered to participate. Reach out on LinkedIn to explore topics for your shared post. Once connected, follow the guidelines for this test <a href="#!">here</a>.</p>
+                                    <p>Here’s a list of potential buddies from your region who have registered to participate. Reach out on LinkedIn to explore topics for your shared post. Once connected, follow the guidelines for this test <a href="#guidelines">here</a>.</p>
                                 </div>
 
                                 <div class="test-page__buddy-wrap flex flex-space-between flex-wrap">
@@ -62,7 +62,7 @@
                                     <?php endfor; ?>
                                 </div>
 
-                                <div class="test-page__guidelines">
+                                <div class="test-page__guidelines" id="guidelines">
                                     <h3>Test A: Guidelines</h3>
                                     <ol>
                                         <li>Check your buddy is in the same country/region as you.</li>

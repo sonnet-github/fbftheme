@@ -94,3 +94,28 @@
         }
     }
 }
+
+.single-campaign {
+
+    .page-heading {
+        padding-top: 75px;
+    }
+}
+
+.single-campaign-wrap {
+    padding-bottom: 75px;
+
+    &__image {
+        width: 50%;
+
+        @media (max-width: 991px) {
+            width: 100%;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+            vertical-align: top;
+        }
+    }
+}

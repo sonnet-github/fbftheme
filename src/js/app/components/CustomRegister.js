@@ -35,6 +35,12 @@ const customRegister = e => {
 
             if (result.success) {
                 formMessageContainer.innerHTML = "<p>" + result.data.message + "</p>";
+                
+                if (result.data.message == 'Registration successful.') {
+                    
+                    window.location.href = '/profile/';
+                }
+
                 form.reset();
 
             } else {

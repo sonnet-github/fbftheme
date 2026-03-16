@@ -25,7 +25,7 @@
                     <div class="test-page-b__inner js-form-container">
                         <div class="test-page-b__description">
                             <h2>Submit Test B results.</h2>
-                            <p>Please ensure you followed the <a href="#!">guidelines</a> for running this experiment including the prompt to analyse your post’s results. Check the <a href="#!">FAQs</a> if you need help.</p>
+                            <p>Please ensure you followed the <a href="/experiments/#guidelines-b">guidelines</a> for running this experiment including the prompt to analyse your post’s results. Check the <a href="/experiments/#faq-b">FAQs</a> if you need help.</p>
                         </div>
 
                         <div class="test-page-b__form ">
