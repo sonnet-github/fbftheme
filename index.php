@@ -28,43 +28,45 @@
                         </div>
                     <?php endwhile; ?>
                 </div>
-                <div class="blog-listing__pagination">
-                    <?php
-                        $paged = max(1, get_query_var('paged'));
-                        $links = paginate_links([
-                            'total'      => $total_pages,
-                            'current'    => $paged,
-                            'type'       => 'array',
-                        ]);
-                        echo '<div class="pagination">';
+                <?php if($total_pages > 1): ?>
+                    <div class="blog-listing__pagination">
+                        <?php
+                            $paged = max(1, get_query_var('paged'));
+                            $links = paginate_links([
+                                'total'      => $total_pages,
+                                'current'    => $paged,
+                                'type'       => 'array',
+                            ]);
+                            echo '<div class="pagination">';
 
-                        /* PREV */
-                        if ($paged > 1) {
-                            echo '<a class="pagination-icon pagination-icon--prev" href="' . get_pagenum_link($paged - 1) . '"><span></span></a>';
-                        } else {
-                            echo '<span class="pagination-icon pagination-icon--prev disabled"><span></span></span>';
-                        }
+                            /* PREV */
+                            if ($paged > 1) {
+                                echo '<a class="pagination-icon pagination-icon--prev" href="' . get_pagenum_link($paged - 1) . '"><span></span></a>';
+                            } else {
+                                echo '<span class="pagination-icon pagination-icon--prev disabled"><span></span></span>';
+                            }
 
-                        /* PAGE NUMBERS */
-                        if (!empty($links)) {
-                            foreach ($links as $link) {
-                                // Remove default prev/next from array
-                                if (strpos($link, 'prev') === false && strpos($link, 'next') === false) {
-                                    echo $link;
+                            /* PAGE NUMBERS */
+                            if (!empty($links)) {
+                                foreach ($links as $link) {
+                                    // Remove default prev/next from array
+                                    if (strpos($link, 'prev') === false && strpos($link, 'next') === false) {
+                                        echo $link;
+                                    }
                                 }
                             }
-                        }
 
-                        /* NEXT */
-                        if ($paged < $total_pages) {
-                            echo '<a class="pagination-icon pagination-icon--next" href="' . get_pagenum_link($paged + 1) . '"><span></span></a>';
-                        } else {
-                            echo '<span class="pagination-icon pagination-icon--next disabled"><span></span></span>';
-                        }
+                            /* NEXT */
+                            if ($paged < $total_pages) {
+                                echo '<a class="pagination-icon pagination-icon--next" href="' . get_pagenum_link($paged + 1) . '"><span></span></a>';
+                            } else {
+                                echo '<span class="pagination-icon pagination-icon--next disabled"><span></span></span>';
+                            }
 
-                        echo '</div>';
-                        ?>
-                </div>
+                            echo '</div>';
+                            ?>
+                    </div>
+                <?php endif; ?>
             </div>
         
         </div>

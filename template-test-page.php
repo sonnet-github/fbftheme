@@ -13,6 +13,19 @@
     
     get_header(); ?>
 
+    <?php 
+        $currentGender = get_user_meta( get_current_user_id(), 'gender', true ); 
+        $oppGender;
+        
+        if ($currentGender == 'male') {
+            $oppGender = 'female';
+        } else {
+            $oppGender = 'male';
+        }
+        
+        ?>
+
+
         <div id="page-content" class="page-blocks" data-tpl="test-page">
         
             <div class="test-page js-tabs">
@@ -37,30 +50,65 @@
                     <div class="test-page__tab-content">
                         <div id="buddy-up" class="test-page__tab-item js-tab-content active">
                             <div class="test-page__tab-item-inner">
-                                <div class="test-page__description">
-                                    <h2>Buddy Options</h2>
-                                    <p>Here’s a list of potential buddies from your region who have registered to participate. Reach out on LinkedIn to explore topics for your shared post. Once connected, follow the guidelines for this test <a href="#guidelines">here</a>.</p>
-                                </div>
 
-                                <div class="test-page__buddy-wrap flex flex-space-between flex-wrap">
-                                    <?php for ($i=0; $i < 12; $i++): ?>
-                                        <div class="test-page__buddy-item">
-                                            <div class="test-page__buddy-item-wrap flex">
-                                                <div class="test-page__buddy-left">
-                                                    <div class="test-page__buddy-image">
-                                                        <img src="/" alt="Sample Image">
+                                <?php if($currentGender == 'male'): ?>
+                                    <div class="test-page__description">
+                                        <p>Thank you for registering for Test A. Please now wait for a female or non-binary participant to contact you on LinkedIn to coordinate your LinkedIn Experiment. Once you've completed your test, please log back here to submit your results.</p>
+                                    </div>
+                                <?php else: ?>
+                                    <div class="test-page__description">
+                                        <h2>Buddy Options</h2>
+                                        <p>Here’s a list of potential buddies from your region who have registered to participate. Reach out on LinkedIn to explore topics for your shared post. Once connected, follow the guidelines for this test <a href="#guidelines">here</a>.</p>
+                                    </div>
+
+                                    <div class="test-page__buddy-wrap flex flex-space-between flex-wrap">
+                                        <?php
+                                            $args = array(
+                                                'role'       => 'Subscriber',
+                                                'meta_query' => array(
+                                                    array(
+                                                        'key'     => 'gender',
+                                                        'value'   => $oppGender,
+                                                        'compare' => '='
+                                                    )
+                                                )
+                                            );
+
+                                            $user_query = new WP_User_Query( $args );
+
+                                            // Get the results
+                                            $users = $user_query->get_results();
+
+                                            // Check for results
+                                            if ( ! empty( $users ) ) {
+                                                foreach ( $users as $user ) {
+                                                    $followerCount = get_user_meta( $user->ID, 'linkedin_followers', true ); 
+                                                    ?>
+                                                    <div class="test-page__buddy-item">
+                                                        <div class="test-page__buddy-item-wrap flex">
+                                                            <div class="test-page__buddy-left" style="display: none;">
+                                                                <div class="test-page__buddy-image">
+                                                                    <img src="/" alt="Sample Image">
+                                                                </div>
+                                                            </div>
+                                                            <div class="test-page__buddy-right">
+                                                                <div class="test-page__buddy-description">
+                                                                    <h3><?=$user->user_firstname?> <?=$user->user_lastname?> (<?=number_format($followerCount)?>)</h3>
+                                                                    <p><a href="#!" class="button button-border">View Profile</a></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="test-page__buddy-right">
-                                                    <div class="test-page__buddy-description">
-                                                        <h3>Adam Higginbotham (1,854)</h3>
-                                                        <p><a href="#!" class="button button-border">View Profile</a></p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    <?php endfor; ?>
-                                </div>
+                                                    <?php
+                                                }
+                                            } else {
+                                                ?>
+
+                                                <?php
+                                            }
+                                            ?>
+                                    </div>
+                                <?php endif; ?>
 
                                 <div class="test-page__guidelines" id="guidelines">
                                     <h3>Test A: Guidelines</h3>

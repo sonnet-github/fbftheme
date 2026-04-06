@@ -414,8 +414,7 @@
         }
 
         // Validate URLs
-        if (!filter_var($_POST['post_url'], FILTER_VALIDATE_URL) ||
-            !filter_var($_POST['chatgpt_analysis'], FILTER_VALIDATE_URL)
+        if (!filter_var($_POST['post_url'], FILTER_VALIDATE_URL)
         ) {
             wp_send_json_error(['message' => 'Please enter valid URLs.']);
         }
@@ -563,9 +562,23 @@
 
         foreach ($restricted_pages as $page) {
             if (strpos($current_url, $page) !== false) {
-                wp_redirect(home_url());
+                wp_redirect(home_url() . "#login");
                 exit;
             }
         }
     }
+
+    // Add column
+    add_filter('manage_users_columns', function($columns) {
+        $columns['gender'] = 'Gender';
+        return $columns;
+    });
+
+    // Fill column with data
+    add_filter('manage_users_custom_column', function($value, $column_name, $user_id) {
+        if ($column_name === 'gender') {
+            return get_user_meta($user_id, 'gender', true);
+        }
+        return $value;
+    }, 10, 3);
 ?>

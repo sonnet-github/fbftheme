@@ -2,6 +2,7 @@ import {validateFields} from "./../helper";
 
 const loginViaEmail = e => {
     const formContainer = document.querySelector('#login-form');
+    const thisHash = window.location.hash;
 
     if (formContainer !== null && formContainer !== undefined) {
         const btnContinue = formContainer.querySelector('.js-continue-login');
@@ -87,6 +88,13 @@ const loginViaEmail = e => {
         });
 
         return await res.json();
+    }
+
+    if (thisHash !== null && thisHash !== undefined) {
+        if (thisHash === '#login') {
+            document.querySelector('body').classList.add('active-popup');
+            document.querySelector('#register-login').classList.add('current-popup-active');
+        }
     }
 }
 

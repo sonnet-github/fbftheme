@@ -11,6 +11,26 @@
  */
     get_header(); ?>
 
+    <style>
+        .single-post .body-unload {
+            padding-top: 115px;
+        }
+
+        .blog-post-thumbnail {
+            margin-bottom: 25px;
+        }
+
+        .blog-post-thumbnail img {
+            vertical-align: top;
+        }
+
+        @media (max-width: 767px) {
+            .single-post .body-unload {
+                padding-top: 71px;
+            }
+        }
+    </style>
+
         <div id="page-content" class="post-blocks" data-tpl="single">
             <?php while(have_posts()): the_post(); ?>
                 <?php 
@@ -21,6 +41,13 @@
 
                  
                 <div class="max-wrap margin-auto">
+
+                    <?php if(has_post_thumbnail()): ?>
+                        <div class="blog-post-thumbnail">
+                            <img src="<?=get_the_post_thumbnail_url()?>" alt="<?=get_the_title();?>">
+                        </div>
+                    <?php endif; ?>
+
                     <div class="page-heading flex flex-space-between">
                         <div class="page-heading__left">
                             <h1><?=get_the_title();?></h1>
