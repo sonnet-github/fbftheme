@@ -14,7 +14,8 @@
     get_header(); ?>
 
     <?php 
-        $currentGender = get_user_meta( get_current_user_id(), 'gender', true ); 
+        $currentGender = get_user_meta( get_current_user_id(), 'gender', true );
+        $currentLocation = get_user_meta( get_current_user_id(), 'country_region', true) ?: "";
         $oppGender;
         
         if ($currentGender == 'male') {
@@ -27,7 +28,6 @@
 
 
         <div id="page-content" class="page-blocks" data-tpl="test-page">
-        
             <div class="test-page js-tabs">
                 <div class="max-wrap margin-auto">
                     <div class="test-page__heading page-heading flex flex-space-between items-center">
@@ -66,11 +66,17 @@
                                             $args = array(
                                                 'role'       => 'Subscriber',
                                                 'meta_query' => array(
+                                                    'relation' => 'AND',
                                                     array(
                                                         'key'     => 'gender',
                                                         'value'   => $oppGender,
                                                         'compare' => '='
-                                                    )
+                                                    ),
+                                                    array(
+                                                        'key'     => 'country_region',
+                                                        'value'   => $currentLocation,
+                                                        'compare' => '='
+                                                    ),
                                                 )
                                             );
 
