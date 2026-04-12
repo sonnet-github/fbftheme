@@ -66,7 +66,7 @@
                     <div class="chart chart--1">
                         <div class="chart-content">
                             <div class="chart-heading">
-                                <h4>Is there a bias based on gender?</h4>
+                                <h4>Is there a bias based on subject matter?</h4>
                             </div>
                             <div class="chart-bars">
                                 <div class="chart-bars-inner">
@@ -142,7 +142,7 @@
                     <div class="chart chart--2">
                         <div class="chart-content">
                             <div class="chart-heading">
-                                <h4>Is there a bias based on gender?</h4>
+                                <h4>Is there a bias based on subject matter?</h4>
                             </div>
                             <div class="chart-bars">
                                 <div class="chart-bars-inner">
