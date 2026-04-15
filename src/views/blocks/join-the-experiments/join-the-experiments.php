@@ -30,36 +30,75 @@
                 </div>
 
                 <?php
-                    $args = [
-                        'number' => -1 // get all users
-                    ];
+                    $argsTestA = array(
+                        "post_type"      => "test-a",
+                        "post_status"    => "publish",
+                        "posts_per_page" => -1
+                    );
+
+                    $queryTestA = new WP_Query($argsTestA);
+
+                    $total_user = 0;
+                    
                     $male = 0;
                     $female = 0;
+
+                    $malePercent = 0;
+                    $femalePercent = 0;
+
                     $maleHeight = 0;
                     $femaleHeight = 0;
 
-                    $user_query = new WP_User_Query($args);
-                    $total_user = 0;
+                    $dataTestA = [];
+                    
+                    if ($queryTestA->have_posts()) {
+                    // if (false) {
+                        while($queryTestA->have_posts()): $queryTestA->the_post();
+                            $postID = get_the_id();
+                            $userID = get_field('user', $postID);
+                            $gender = get_field('gender', 'user_' . $userID);
+                            $followerCount = get_field('linkedin_followers', 'user_' . $userID);
+                            $numReached = get_field('no_of_members_reached', $postID) ?: 0;
 
-                    if (!empty($user_query->results)) {
-                        foreach ($user_query->results as $user) {
+                            $currentTotal = ($numReached / $followerCount) * 100;
+                            $currentTotal = number_format($currentTotal, 2);
+
                             $total_user++;
-                            if (get_field('gender', 'user_' . $user->ID) === 'male') {
+
+                            if ($gender == 'male') {
                                 $male++;
+                                $malePercent += $currentTotal;
                             } else {
                                 $female++;
+                                $femalePercent += $currentTotal;
                             }
-                        }
-                        $maleHeight = (($male / $total_user) * 100);
-                        $femaleHeight = (($female / $total_user) * 100);
-                        // if ($male > $female) {
-                        //     $femaleHeight = (($female / $male) * 100);
-                        //     $maleHeight = 100;
-                        // } else {
-                        //     $maleHeight = (($male / $female) * 100);
-                        //     $femaleHeight = 100;
-                        // }
+                            
+                            // Testing purpose
+                            // $dataTestA[] = [
+                            //     "num_of_reached" => $numReached,
+                            //     "userID" => $userID,
+                            //     "gender" => $gender,
+                            //     "followerCount" => $followerCount,
+                            //     "currentTotal" => $currentTotal,
+                            //     "male_percent" => $malePercent,
+                            //     "female_percent" => $femalePercent 
+                            // ];
+                        endwhile;
+
+                        $malePercent = number_format(($malePercent / $male), 2);
+                        $femalePercent = number_format(($femalePercent / $female), 2);
+
+                        // echo "<pre>";
+                        // var_dump($dataTestA);
+                        // echo "</pre>";
+                        
+                        wp_reset_postdata();
+                    } else {
+
                     }
+
+                    $maleHeight = $malePercent;
+                    $femaleHeight = $femalePercent;
                  ?>
                 
                 <div class="join-the-experiment__charts flex flex-space-between">
@@ -70,14 +109,14 @@
                             </div>
                             <div class="chart-bars">
                                 <div class="chart-bars-inner">
-                                    <div class="chart-bar chart-bar--purple" style="height: <?=$maleHeight?>%">
+                                    <div class="chart-bar chart-bar--purple" style="height: <?=$maleHeight?>%; <?=($maleHeight == 0 ? "min-height: 0; padding: 0;" : "")?>">
                                         <div class="chart-bar-label">
-                                            <label><?=ceil($maleHeight)?>%</label>
+                                            <label style="<?=($maleHeight == 0 ? "display: none;" : "")?>"><?=ceil($maleHeight)?>%</label>
                                         </div>
                                     </div>
-                                    <div class="chart-bar" style="height: <?=$femaleHeight?>%">
+                                    <div class="chart-bar" style="height: <?=$femaleHeight?>%; <?=($femaleHeight == 0 ? "min-height: 0; padding: 0;" : "")?>">
                                         <div class="chart-bar-label">
-                                            <label><?=ceil($femaleHeight)?>%</label>
+                                            <label style="<?=($maleHeight == 0 ? "display: none;" : "")?>"><?=ceil($femaleHeight)?>%</label>
                                         </div>
                                     </div>
                                 </div>
