@@ -175,6 +175,8 @@
                         $counts = array_count_values($allItems);
                         $maxNum = max($allItems);
                         $maxVal = 0;
+
+                        $maxKey = array_search(max($counts), $counts);
                         
                         ?>
 
@@ -185,22 +187,22 @@
                             </div>
                             <div class="chart-bars">
                                 <div class="chart-bars-inner">
-                                    <div class="chart-bar chart-bar--purple" style="height: calc((<?=$counts['breakout']?> / <?=$counts[$maxNum]?>) * 100%);">
+                                    <div class="chart-bar chart-bar--purple" style="height: calc((<?=$counts['breakout']?> / <?=$counts[$maxKey]?>) * 100%);">
                                         <div class="chart-bar-label">
                                             <label><?=ceil(($counts['breakout']/$itemSum) * 100)?>%</label>
                                         </div>
                                     </div>
-                                    <div class="chart-bar chart-bar--white" style="height: calc((<?=$counts['sustained growth']?> / <?=$counts[$maxNum]?>) * 100%);">
+                                    <div class="chart-bar chart-bar--white" style="height: calc((<?=$counts['sustained growth']?> / <?=$counts[$maxKey]?>) * 100%);">
                                         <div class="chart-bar-label">
                                             <label><?=ceil(($counts['sustained growth']/$itemSum) * 100)?>%</label>
                                         </div>
                                     </div>
-                                    <div class="chart-bar chart-bar--black" style="height: calc((<?=$counts['contained']?> / <?=$counts[$maxNum]?>) * 100%);">
+                                    <div class="chart-bar chart-bar--black" style="height: calc((<?=$counts['contained']?> / <?=$counts[$maxKey]?>) * 100%);">
                                         <div class="chart-bar-label">
                                             <label><?=ceil(($counts['contained']/$itemSum) * 100)?>%</label>
                                         </div>
                                     </div>
-                                    <div class="chart-bar chart-bar--bordered" style="height: calc((<?=$counts['suppressed']?> / <?=$counts[$maxNum]?>) * 100%);">
+                                    <div class="chart-bar chart-bar--bordered" style="height: calc((<?=$counts['suppressed']?> / <?=$counts[$maxKey]?>) * 100%);">
                                         <div class="chart-bar-label">
                                             <label><?=ceil(($counts['suppressed']/$itemSum) * 100)?>%</label>
                                         </div>

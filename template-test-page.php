@@ -108,9 +108,47 @@
                                                     <?php
                                                 }
                                             } else {
-                                                ?>
 
-                                                <?php
+                                                $args = array(
+                                                    'role'       => 'Subscriber',
+                                                    'number' => 9,
+                                                    'orderby' => 'user_registered',
+                                                    'order' => 'DESC',
+                                                    'meta_query' => array(
+                                                        array(
+                                                            'key'     => 'gender',
+                                                            'value'   => $oppGender,
+                                                            'compare' => '='
+                                                        ),
+                                                    )
+                                                );
+
+                                                $user_query = new WP_User_Query( $args );
+
+                                                // Get the results
+                                                $users = $user_query->get_results();
+                                                if ( ! empty( $users ) ) {
+                                                    foreach ( $users as $user ) {
+                                                        $followerCount = get_user_meta( $user->ID, 'linkedin_followers', true ); 
+                                                        ?>
+                                                        <div class="test-page__buddy-item">
+                                                            <div class="test-page__buddy-item-wrap flex">
+                                                                <div class="test-page__buddy-left" style="display: none;">
+                                                                    <div class="test-page__buddy-image">
+                                                                        <img src="/" alt="Sample Image">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="test-page__buddy-right">
+                                                                    <div class="test-page__buddy-description">
+                                                                        <h3><?=$user->user_firstname?> <?=$user->user_lastname?> (<?=number_format($followerCount)?>)</h3>
+                                                                        <p><a href="#!" class="button button-border">View Profile</a></p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <?php
+                                                    }
+                                                }
                                             }
                                             ?>
                                     </div>
